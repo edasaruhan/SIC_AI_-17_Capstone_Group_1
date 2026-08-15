@@ -1,0 +1,101 @@
+parent_id,student_id,free_text_tr,tone_hint
+par_0001,stu_0001,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0002,stu_0002,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",strict
+par_0003,stu_0003,Yanlış yapmaktan korktuğu için başlamıyor.,supportive
+par_0004,stu_0004,Blokları sonuna kadar getiremiyor.,supportive
+par_0005,stu_0005,Yanlış yapmaktan korktuğu için başlamıyor.,supportive
+par_0006,stu_0006,Yanlış yapmaktan korktuğu için başlamıyor.,anxious
+par_0007,stu_0007,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0008,stu_0008,Telefon bildirimleri dersi sürekli bölüyor.,supportive
+par_0009,stu_0009,Telefon bildirimleri dersi sürekli bölüyor.,supportive
+par_0010,stu_0010,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",strict
+par_0011,stu_0011,"Dersi açıyor ama 15 dakikada bırakıyor, yarım kalıyor.",supportive
+par_0012,stu_0012,Telefon bildirimleri dersi sürekli bölüyor.,supportive
+par_0013,stu_0013,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",supportive
+par_0014,stu_0014,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0015,stu_0015,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0016,stu_0016,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0017,stu_0017,Blokları sonuna kadar getiremiyor.,supportive
+par_0018,stu_0018,Yanlış yapmaktan korktuğu için başlamıyor.,supportive
+par_0019,stu_0019,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",anxious
+par_0020,stu_0020,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",strict
+par_0021,stu_0021,"Uyku düzeni bozuldu, gece çalışıp sabah verimsiz oluyor.",anxious
+par_0022,stu_0022,Telefon bildirimleri dersi sürekli bölüyor.,strict
+par_0023,stu_0023,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",strict
+par_0024,stu_0024,Başlamadan önce defalarca bahane buluyor.,supportive
+par_0025,stu_0025,Akşam geç başladığı için ertesi gün yetiştiremiyor.,supportive
+par_0026,stu_0026,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",supportive
+par_0027,stu_0027,Plan yapıyoruz ama ilk adımı atmakta zorlanıyor.,strict
+par_0028,stu_0028,Sınav yaklaşınca çalışma düzeni bozuluyor.,strict
+par_0029,stu_0029,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",strict
+par_0030,stu_0030,Başlamadan önce defalarca bahane buluyor.,anxious
+par_0031,stu_0031,"Gündüz boş geçiyor, gece geç saatlere yığıyor.",supportive
+par_0032,stu_0032,"Uyku düzeni bozuldu, gece çalışıp sabah verimsiz oluyor.",strict
+par_0033,stu_0033,Akşam geç başladığı için ertesi gün yetiştiremiyor.,supportive
+par_0034,stu_0034,Başlamadan önce defalarca bahane buluyor.,strict
+par_0035,stu_0035,Plan yapıyoruz ama ilk adımı atmakta zorlanıyor.,strict
+par_0036,stu_0036,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",anxious
+par_0037,stu_0037,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",supportive
+par_0038,stu_0038,"Dersi açıyor ama 15 dakikada bırakıyor, yarım kalıyor.",supportive
+par_0039,stu_0039,Akşam geç başladığı için ertesi gün yetiştiremiyor.,strict
+par_0040,stu_0040,Sınav yaklaşınca çalışma düzeni bozuluyor.,supportive
+par_0041,stu_0041,"İlk heyecanla başlıyor, sonra dağılıp kalkıyor.",supportive
+par_0042,stu_0042,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0043,stu_0043,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0044,stu_0044,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",anxious
+par_0045,stu_0045,"Gündüz boş geçiyor, gece geç saatlere yığıyor.",anxious
+par_0046,stu_0046,Başlamadan önce defalarca bahane buluyor.,strict
+par_0047,stu_0047,Plan yapıyoruz ama ilk adımı atmakta zorlanıyor.,anxious
+par_0048,stu_0048,Blokları sonuna kadar getiremiyor.,anxious
+par_0049,stu_0049,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",anxious
+par_0050,stu_0050,Akşam geç başladığı için ertesi gün yetiştiremiyor.,supportive
+par_0051,stu_0051,"Gündüz boş geçiyor, gece geç saatlere yığıyor.",supportive
+par_0052,stu_0052,"Gündüz boş geçiyor, gece geç saatlere yığıyor.",anxious
+par_0053,stu_0053,Blokları sonuna kadar getiremiyor.,supportive
+par_0054,stu_0054,Sınav yaklaşınca çalışma düzeni bozuluyor.,anxious
+par_0055,stu_0055,"Dersi açıyor ama 15 dakikada bırakıyor, yarım kalıyor.",anxious
+par_0056,stu_0056,Akşam geç başladığı için ertesi gün yetiştiremiyor.,anxious
+par_0057,stu_0057,Başlamadan önce defalarca bahane buluyor.,supportive
+par_0058,stu_0058,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",anxious
+par_0059,stu_0059,"İlk heyecanla başlıyor, sonra dağılıp kalkıyor.",strict
+par_0060,stu_0060,"Dersi açıyor ama 15 dakikada bırakıyor, yarım kalıyor.",anxious
+par_0061,stu_0061,"Uyku düzeni bozuldu, gece çalışıp sabah verimsiz oluyor.",strict
+par_0062,stu_0062,Başlamadan önce defalarca bahane buluyor.,supportive
+par_0063,stu_0063,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",supportive
+par_0064,stu_0064,Sınav yaklaşınca çalışma düzeni bozuluyor.,strict
+par_0065,stu_0065,Başlamadan önce defalarca bahane buluyor.,anxious
+par_0066,stu_0066,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",supportive
+par_0067,stu_0067,Telefon bildirimleri dersi sürekli bölüyor.,strict
+par_0068,stu_0068,Akşam geç başladığı için ertesi gün yetiştiremiyor.,anxious
+par_0069,stu_0069,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",strict
+par_0070,stu_0070,Plan yapıyoruz ama ilk adımı atmakta zorlanıyor.,anxious
+par_0071,stu_0071,Telefon bildirimleri dersi sürekli bölüyor.,supportive
+par_0072,stu_0072,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0073,stu_0073,Blokları sonuna kadar getiremiyor.,anxious
+par_0074,stu_0074,"Gündüz boş geçiyor, gece geç saatlere yığıyor.",anxious
+par_0075,stu_0075,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0076,stu_0076,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0077,stu_0077,Plan yapıyoruz ama ilk adımı atmakta zorlanıyor.,supportive
+par_0078,stu_0078,Başlamadan önce defalarca bahane buluyor.,anxious
+par_0079,stu_0079,Telefon bildirimleri dersi sürekli bölüyor.,strict
+par_0080,stu_0080,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0081,stu_0081,"Dersi açıyor ama 15 dakikada bırakıyor, yarım kalıyor.",anxious
+par_0082,stu_0082,Plan yapıyoruz ama ilk adımı atmakta zorlanıyor.,strict
+par_0083,stu_0083,"İlk heyecanla başlıyor, sonra dağılıp kalkıyor.",anxious
+par_0084,stu_0084,"Uyku düzeni bozuldu, gece çalışıp sabah verimsiz oluyor.",supportive
+par_0085,stu_0085,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0086,stu_0086,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",supportive
+par_0087,stu_0087,Başlamadan önce defalarca bahane buluyor.,supportive
+par_0088,stu_0088,"İlk heyecanla başlıyor, sonra dağılıp kalkıyor.",anxious
+par_0089,stu_0089,Başlamadan önce defalarca bahane buluyor.,anxious
+par_0090,stu_0090,Telefon bildirimleri dersi sürekli bölüyor.,anxious
+par_0091,stu_0091,"Odaklandığını sanıyoruz, uygulamalar dikkatini dağıtıyor.",strict
+par_0092,stu_0092,"Gündüz boş geçiyor, gece geç saatlere yığıyor.",anxious
+par_0093,stu_0093,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0094,stu_0094,"Uyku düzeni bozuldu, gece çalışıp sabah verimsiz oluyor.",strict
+par_0095,stu_0095,"Uyku düzeni bozuldu, gece çalışıp sabah verimsiz oluyor.",strict
+par_0096,stu_0096,"Masaya oturması saatler sürüyor, dersi bir türlü başlatamıyor.",anxious
+par_0097,stu_0097,Telefon bildirimleri dersi sürekli bölüyor.,strict
+par_0098,stu_0098,"Akşam dersi açıyor ama telefon elinden düşmüyor, sosyal medyada kayboluyor.",supportive
+par_0099,stu_0099,Sınav yaklaşınca çalışma düzeni bozuluyor.,strict
+par_0100,stu_0100,"Deneme haftası olunca iyice kapanıyor, kaygıyla erteliyor.",anxious

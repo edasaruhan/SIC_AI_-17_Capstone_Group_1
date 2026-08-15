@@ -1,0 +1,101 @@
+intent_id,parent_id,student_id,raw_text_tr,softened_text_tr
+int_0001,par_0001,stu_0001,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0002,par_0002,stu_0002,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0003,par_0003,stu_0003,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0004,par_0004,stu_0004,"Dersi yine böldü, çok kızgınım.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0005,par_0005,stu_0005,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0006,par_0006,stu_0006,"Herkes çalışıyor, o hâlâ erteiyor.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0007,par_0007,stu_0007,Saatlerdir masada ama hiçbir şey bitmemiş.,"Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0008,par_0008,stu_0008,Saatlerdir masada ama hiçbir şey bitmemiş.,"Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0009,par_0009,stu_0009,"Herkes çalışıyor, o hâlâ erteiyor.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0010,par_0010,stu_0010,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0011,par_0011,stu_0011,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0012,par_0012,stu_0012,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0013,par_0013,stu_0013,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0014,par_0014,stu_0014,"Herkes çalışıyor, o hâlâ erteiyor.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0015,par_0015,stu_0015,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0016,par_0016,stu_0016,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0017,par_0017,stu_0017,"Herkes çalışıyor, o hâlâ erteiyor.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0018,par_0018,stu_0018,Saatlerdir masada ama hiçbir şey bitmemiş.,Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0019,par_0019,stu_0019,"Herkes çalışıyor, o hâlâ erteiyor.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0020,par_0020,stu_0020,"Herkes çalışıyor, o hâlâ erteiyor.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0021,par_0021,stu_0021,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0022,par_0022,stu_0022,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0023,par_0023,stu_0023,"Herkes çalışıyor, o hâlâ erteiyor.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0024,par_0024,stu_0024,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0025,par_0025,stu_0025,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0026,par_0026,stu_0026,"Herkes çalışıyor, o hâlâ erteiyor.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0027,par_0027,stu_0027,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0028,par_0028,stu_0028,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0029,par_0029,stu_0029,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0030,par_0030,stu_0030,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0031,par_0031,stu_0031,Saatlerdir masada ama hiçbir şey bitmemiş.,"Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0032,par_0032,stu_0032,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0033,par_0033,stu_0033,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0034,par_0034,stu_0034,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0035,par_0035,stu_0035,Saatlerdir masada ama hiçbir şey bitmemiş.,"Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0036,par_0036,stu_0036,"Herkes çalışıyor, o hâlâ erteiyor.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0037,par_0037,stu_0037,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0038,par_0038,stu_0038,"Herkes çalışıyor, o hâlâ erteiyor.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0039,par_0039,stu_0039,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0040,par_0040,stu_0040,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0041,par_0041,stu_0041,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0042,par_0042,stu_0042,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0043,par_0043,stu_0043,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0044,par_0044,stu_0044,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0045,par_0045,stu_0045,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0046,par_0046,stu_0046,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0047,par_0047,stu_0047,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0048,par_0048,stu_0048,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0049,par_0049,stu_0049,Saatlerdir masada ama hiçbir şey bitmemiş.,"Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0050,par_0050,stu_0050,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0051,par_0051,stu_0051,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0052,par_0052,stu_0052,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0053,par_0053,stu_0053,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0054,par_0054,stu_0054,Saatlerdir masada ama hiçbir şey bitmemiş.,Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0055,par_0055,stu_0055,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0056,par_0056,stu_0056,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0057,par_0057,stu_0057,"Dersi yine böldü, çok kızgınım.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0058,par_0058,stu_0058,Saatlerdir masada ama hiçbir şey bitmemiş.,"Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0059,par_0059,stu_0059,"Dersi yine böldü, çok kızgınım.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0060,par_0060,stu_0060,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0061,par_0061,stu_0061,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0062,par_0062,stu_0062,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0063,par_0063,stu_0063,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0064,par_0064,stu_0064,"Dersi yine böldü, çok kızgınım.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0065,par_0065,stu_0065,"Dersi yine böldü, çok kızgınım.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0066,par_0066,stu_0066,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0067,par_0067,stu_0067,Saatlerdir masada ama hiçbir şey bitmemiş.,"Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0068,par_0068,stu_0068,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0069,par_0069,stu_0069,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0070,par_0070,stu_0070,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0071,par_0071,stu_0071,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0072,par_0072,stu_0072,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0073,par_0073,stu_0073,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0074,par_0074,stu_0074,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0075,par_0075,stu_0075,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0076,par_0076,stu_0076,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0077,par_0077,stu_0077,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0078,par_0078,stu_0078,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0079,par_0079,stu_0079,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0080,par_0080,stu_0080,Saatlerdir masada ama hiçbir şey bitmemiş.,"Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0081,par_0081,stu_0081,"Dersi yine böldü, çok kızgınım.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0082,par_0082,stu_0082,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0083,par_0083,stu_0083,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0084,par_0084,stu_0084,"Dersi yine böldü, çok kızgınım.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0085,par_0085,stu_0085,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0086,par_0086,stu_0086,Saatlerdir masada ama hiçbir şey bitmemiş.,"Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0087,par_0087,stu_0087,"Dersi yine böldü, çok kızgınım.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0088,par_0088,stu_0088,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0089,par_0089,stu_0089,"Herkes çalışıyor, o hâlâ erteiyor.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0090,par_0090,stu_0090,"Herkes çalışıyor, o hâlâ erteiyor.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0091,par_0091,stu_0091,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0092,par_0092,stu_0092,Saatlerdir masada ama hiçbir şey bitmemiş.,Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0093,par_0093,stu_0093,"Dersi yine böldü, çok kızgınım.","Yarım kalan bloğu birlikte kapatabiliriz. Zamanlayıcıyı 25 dakikaya kur, sadece bir konuya bak."
+int_0094,par_0094,stu_0094,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0095,par_0095,stu_0095,"Herkes çalışıyor, o hâlâ erteiyor.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0096,par_0096,stu_0096,"Yine telefon, yine boş; böyle YKS kazanılmaz.",Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0097,par_0097,stu_0097,"Yine telefon, yine boş; böyle YKS kazanılmaz.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
+int_0098,par_0098,stu_0098,Saatlerdir masada ama hiçbir şey bitmemiş.,Bugün zor bir gün olabilir. Küçük bir adım yeterli: 15 dakika sadece ilk soru seti.
+int_0099,par_0099,stu_0099,"Dersi yine böldü, çok kızgınım.",Geceye bırakmak yorucu olabilir. Yarın gündüz 2 kısa blok planlayalım.
+int_0100,par_0100,stu_0100,"Herkes çalışıyor, o hâlâ erteiyor.","Dikkatin dağıldığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince kısa mola senin."
