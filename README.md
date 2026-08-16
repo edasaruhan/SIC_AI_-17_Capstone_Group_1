@@ -1,8 +1,8 @@
 # AI Personal Coach — Pazarlama Teknoloji Değerlendirmesi
 
-[![Status: In Progress](https://img.shields.io/badge/Status-In_Progress-yellow.svg)](#) [![Deadline: Aug 16](https://img.shields.io/badge/Deadline-Aug_16-red.svg)](#) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#)
+[![Status: In Progress](https://img.shields.io/badge/Status-In_Progress-yellow.svg)](#) [![Deadline: Aug 16](https://img.shields.io/badge/Deadline-Aug_16-red.svg)](#) 
 
-## 🎓 Proje Özeti
+## Proje Özeti
 
 **AI Personal Coach**, LGS ve YKS (Türkiye'deki lise ve üniversite giriş sınavları) hazırlığı yapan öğrenciler ve velileri için özel olarak tasarlanmış abonelik tabanlı, yapay zeka destekli bir e-learning (e-öğrenme) platformudur. Bu proje, eğitim teknolojileri platformlarının en büyük ticari sorunu olan **erken veli churn (müşteri kaybı) problemini (1–2 ay içinde abonelik iptali)** çözmek amacıyla yapay zeka ve modern pazarlama teknolojilerinin nasıl entegre edilebileceğini akademik bir derinlikte değerlendirmektedir. 
 
@@ -19,7 +19,7 @@ Abonelik tabanlı eğitim platformlarında yaşanan en kritik sorun asimetrik de
 
 ---
 
-## 📊 Pazarlama Metrikleri
+## Pazarlama Metrikleri
 
 Platformun tüm teknolojik mimarisi, aşağıdaki temel başarı metriklerini (KPI'lar) maksimize etmek üzere kurgulanmıştır.
 
@@ -35,7 +35,7 @@ Platformun tüm teknolojik mimarisi, aşağıdaki temel başarı metriklerini (K
 
 ---
 
-## 🎯 Hedef Müşteri (Dual-User Model / İkili Kullanıcı)
+## Hedef Müşteri (Dual-User Model / İkili Kullanıcı)
 
 EdTech platformlarında karar alıcı ile son kullanıcı genellikle farklıdır. Bu durum karmaşık bir pazarlama dinamiği yaratır.
 
@@ -62,7 +62,7 @@ EdTech platformlarında karar alıcı ile son kullanıcı genellikle farklıdır
 
 ---
 
-## 🤖 Teknoloji Stack (Kısa Özet)
+## Teknoloji Stack (Kısa Özet)
 
 Teknoloji yığınımız, veri toplamadan mesaj iletimine kadar uçtan uca pürüzsüz bir pazarlama makinesi yaratmak için tasarlanmıştır.
 
@@ -77,7 +77,7 @@ Teknoloji yığınımız, veri toplamadan mesaj iletimine kadar uçtan uca pür�
 
 ---
 
-## 📈 Veri Kaynağı ve Metodoloji
+## Veri Kaynağı ve Metodoloji
 
 ### OULAD Dataset + Sentetik Veri Yaklaşımı
 
@@ -104,7 +104,7 @@ Makine öğrenmesi modelimize (LightGBM) giren temel **Veli (Parent) Davranış 
 
 ---
 
-## 👥 Ekip Rolü ve Doküman Dağılımı
+## Ekip Rolü ve Doküman Dağılımı
 
 Projemiz, spesifik sorumluluklara sahip 5 kişilik bir takım tarafından 3 ana dokümantasyon klasöründe koordineli olarak yürütülmektedir:
 
@@ -163,7 +163,7 @@ Projemiz, spesifik sorumluluklara sahip 5 kişilik bir takım tarafından 3 ana 
 
 ---
 
-## 📁 Repo Yapısı
+## Repo Yapısı
 
 Proje dosyaları mantıksal bir klasör yapısı içerisinde GitHub'da organize edilmiştir:
 
@@ -198,7 +198,7 @@ SIC_AI_-17_Capstone_Group_1/
 
 ---
 
-## 🔧 Teknoloji Detayları
+## Teknoloji Detayları
 
 Projenin arkasında çalışan yapay zeka ajanlarının mimari anatomisi.
 
@@ -245,7 +245,7 @@ Projenin arkasında çalışan yapay zeka ajanlarının mimari anatomisi.
 
 ---
 
-## ⏰ Timeline (Zaman Çizelgesi)
+## Timeline (Zaman Çizelgesi)
 
 | Tarih | Milestone | Sorumluluk |
 |-------|-----------|------------|
@@ -258,7 +258,7 @@ Projenin arkasında çalışan yapay zeka ajanlarının mimari anatomisi.
 
 ---
 
-## 🎓 Proje Değerlendirme Çerçevesi
+## Proje Değerlendirme Çerçevesi
 
 Bu proje, temel eksen olarak bir **"AI in Marketing" (Pazarlamada Yapay Zeka)** çalışmasıdır (Birleşmiş Milletler Sürdürülebilir Kalkınma Hedeflerine uyum zorunlu tutulmamıştır).
 
@@ -277,26 +277,6 @@ Bu proje, temel eksen olarak bir **"AI in Marketing" (Pazarlamada Yapay Zeka)** 
 
 ---
 
-## 👨‍💼 Ekip Üyeleri
-
-| Kişi | Rol | GitHub | Sorumluluk |
-|------|-----|--------|------------|
-| **Berat Erol ÇELİK** | Kişi 5 | [@BeratCelikk](https://github.com/BeratCelikk) | Technology Review |
-| [K1 Adı] | Kişi 1 | @[username] | Literature Lead + Editor |
-| [K2 Adı] | Kişi 2 | @[username] | Literature Analyst |
-| [K3 Adı] | Kişi 3 | @[username] | Data Lead (EDA) |
-| [K4 Adı] | Kişi 4 | @[username] | Data Governance |
-
----
-
-## 💬 İletişim Koordinasyonu
-
-- **Proje Lead:** [K1 Adı] (@[username])
-- **GitHub Issues:** Teknik sorular, kod hataları ve dokümantasyon koordinasyonu (coordination).
-- **Slack/Discord:** Anlık (Real-time) günlük koordinasyon.
-- **Deadline Questions:** Teslimat ile ilgili acil soruları K1'e ulaştırın.
-
----
 
 ## 📚 Kaynaklar ve Referanslar
 
@@ -311,7 +291,7 @@ Tüm akademik ve sektörel kaynaklar APA formatında ortak [`references.bib`](./
 
 ---
 
-## 📝 Lisans & Etik Çerçeve
+## Lisans & Etik Çerçeve
 
 Bu proje, tamamen **akademik amaçlarla** yapay zeka tabanlı pazarlama teknolojisinin değerlendirilmesi için oluşturulmuştur.
 **KVKK Uyum Beyanı:** Tasarlanan tüm veri işleme süreçleri Türk Kişisel Verileri Koruma Kanunu'na uygundur.
@@ -319,7 +299,7 @@ Bu proje, tamamen **akademik amaçlarla** yapay zeka tabanlı pazarlama teknoloj
 
 ---
 
-## 🚀 Nasıl Başlanılır?
+## Nasıl Başlanılır?
 
 ### Dosyaları Okuma Sırası
 Sistemin genel bağlamını kavramak için önerilen okuma sırası:
@@ -345,7 +325,7 @@ PR açmadan önce aşağıdaki listeyi onaylayın:
 
 ---
 
-## 📞 Sorular?
+## Sorular?
 
 Herhangi bir soru, öneri veya iş akışı problemi (issue) için:
 1. GitHub depomuz üzerinden **Issues** bölümünde kayıt açın.
