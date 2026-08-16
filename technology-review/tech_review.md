@@ -144,3 +144,163 @@ Bu raporda detaylandırılan teknolojik mimari kararları, AI Personal Coach pro
 2.  **Sesli Etkileşim (Speech-to-Text):** Projenin AR-GE safhasında, öğrencilerin duygusal durumunu analiz edebilmek için OpenAI Whisper (veya muadili açık kaynak modeller) kullanılarak sesli notlardan duygu analizi yapılması düşünülmektedir. Ses analizi, öğrencinin metinle ifade edemediği sınav kaygısını tonlamasından anlayarak risk modelini (LightGBM) çok daha erken uyarabilecektir. Ancak bu modül, KVKK uyumluluğu gözetilerek yalnızca aktif öğrenci onayıyla (opt-in) devreye alınacaktır.
 
 Özetle, teknolojiyi bir amaç değil, ebeveyn ile öğrenci arasındaki iletişimsizliği çözen, ticari abonelik metriklerini iyileştiren güvenilir bir "araç" olarak konumlandırdık. AI Personal Coach, salt analitik doğrulukla değil, insani duyguları anlayan, empati kuran ve özerkliği destekleyen bütüncül mimarisiyle EdTech pazarında yeni bir standart belirlemektedir.
+
+
+## 9. Derinlemesine Mimari Analiz: Matematiksel Modeller ve Veri Akışı
+
+Bu bölümde, AI Personal Coach sisteminin kalbini oluşturan makine öğrenmesi algoritmalarının matematiksel temelleri ve veri işleme (data pipeline) süreçleri detaylı bir şekilde incelenecektir. Modelin teknik doğruluğu, doğrudan "90 Günlük Veli Elde Tutma (Retention) Oranı" metriğine etki ettiği için, hiperparametre optimizasyonundan kayıp fonksiyonlarına (loss functions) kadar her detayın pazarlama çıktısı düşünülerek tasarlanması gerekmiştir.
+
+### 9.1 LightGBM Matematiksel Temelleri ve Hiperparametre Optimizasyonu
+
+Dersten kopuş (churn) riski, doğası gereği ikili bir sınıflandırma (binary classification) problemidir. Öğrenci ya dersten kopar ($y=1$) ya da eğitime devam eder ($y=0$). Ancak pazarlama müdahaleleri için sadece $0$ veya $1$ tahmini yeterli değildir; sistemin, öğrencinin kopma "ihtimalini" (risk score) sürekli ve güncellenen bir olasılık fonksiyonu $P(y=1|x)$ olarak hesaplaması gerekir.
+
+LightGBM algoritması, bu olasılığı gradyan artırma (gradient boosting) yaklaşımıyla optimize eder. Modelin temel amacı, aşağıdaki lojistik kayıp (logistic loss - logloss) fonksiyonunu minimize etmektir:
+
+$$ \mathcal{L}(y, p) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right] $$
+
+Burada:
+*   $N$: Analiz edilen toplam öğrenci oturumu sayısı.
+*   $y_i$: Öğrencinin gerçek durumu (1: churn, 0: aktif).
+*   $p_i$: Modelin öğrencinin churn yapacağına dair tahmini olasılığı.
+
+LightGBM'i XGBoost'tan ayıran en temel fark, Eğitim verisini histogram tabanlı ağaçlara bölmesidir. Karar ağaçlarının bölünme (split) noktalarında kazancı (Information Gain) maksimize etmek için GOSS (Gradient-based One-Side Sampling) algoritması kullanılır. GOSS, yüksek gradyana (yani modelin henüz doğru tahmin edemediği, büyük hataya sahip) sahip örneklere odaklanırken, düşük gradyanlı veri noktalarını rastgele örnekleyerek eğitim setinden çıkarır. 
+
+**Modelin Mimarisine Entegre Edilen Hiperparametreler:**
+*   `learning_rate` (0.01 - 0.05): Modelin çok hızlı ezberlemesini (overfitting) önlemek için düşük tutulmuştur. Bu, özellikle "Kaygıyla Erteleyen" öğrenci profillerinde zamanla değişen yavaş davranışsal sinyallerin daha doğru yakalanmasını sağlar.
+*   `num_leaves` (31 - 63): Yaprak odaklı (leaf-wise) büyüme algoritması gereği, `num_leaves` değeri ağacın ne kadar karmaşıklaşacağını belirler. Derinlik sınırlandırılmadığında aşırı uyuma (overfitting) yatkınlık oluşur, bu nedenle `max_depth` parametresi ile sınırlandırılarak genelleştirme yeteneği artırılmıştır.
+*   `scale_pos_weight`: Dersten kopan öğrenci (churn) sayısının, derse devam eden öğrenci sayısına oranı genellikle çok düşüktür (örneğin %5 churn, %95 aktif). Modelin sadece çoğunluk sınıfına (aktif) odaklanıp churn olaylarını kaçırmaması için, bu parametre azınlık sınıfı lehine ağırlıklandırılmıştır. Bu ince ayar, doğrudan "Bildirim Aksiyonu Tamamlama Oranı" KPI'sını hedefler çünkü model yanlış alarm (false positive) verirse velide "bildirim yorgunluğu" oluşur, alarmı kaçırırsa (false negative) abone kaybedilir.
+
+### 9.2 SHAP (SHapley Additive exPlanations) ve Yorumlanabilirlik
+
+Modelin ürettiği risk skoru, veliye açıklanabilir (explainable) olmak zorundadır. "Neden çocuğumun risk skoru %85?" sorusunun teknik değil, eyleme dönüştürülebilir pedagojik bir cevabı olmalıdır. Bu noktada SHAP değerleri devreye girer.
+
+Oyun teorisi (Game Theory) temelli SHAP değerleri, modele giren her bir özelliğin (feature), o anki risk tahminine ne kadar katkı (pozitif veya negatif) sağladığını hesaplar:
+
+$$ \phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|! (|F| - |S| - 1)!}{|F|!} \left[ f_x(S \cup \{i\}) - f_x(S) \right] $$
+
+Sistemimiz, her risk skoru yükseldiğinde LightGBM modelinden SHAP değerlerini çeker. Örneğin, bir öğrenci için en yüksek SHAP değerine sahip olan değişken `idle_time_last_10m` (son 10 dakikadaki boşta kalma süresi) ise, sistem bu durumu "Başlayamayan" veya "Yarıda Bırakan" segmenti olarak etiketler. Bu etiket, LLM katmanına ("Üslup Dönüştürme") prompt parametresi olarak geçer. Böylece LLM veliye, "Öğrencinin son günlerde derslere başlama süresinde gecikmeler yaşanıyor (Başlayamayan profil), lütfen şu yaklaşımla konuşmayı deneyin..." diyebilir. Yorumlanabilirlik (Explainability), teknik bir zorunluluk değil, doğrudan "Veli-Öğrenci Diyalog Benimseme Oranı"nı artıran stratejik bir karar mekanizmasıdır.
+
+## 10. API Mimarisi, Payload Yapıları ve Sistem Entegrasyonu
+
+Platformumuz, modüler ve yüksek erişilebilirlikli (High Availability - HA) bir mikroservis yapısı (Microservices Architecture) üzerine inşa edilmiştir. Risk tahmini, Kural Motoru, LLM orkestrasyonu ve İletişim Servisleri arasındaki tüm haberleşme JSON tabanlı RESTful API'ler ve Apache Kafka üzerinden asenkron event-driven (olay güdümlü) mimari ile sağlanır.
+
+### 10.1 Veri Akış Mimarisi (Data Pipeline)
+1.  **Event Ingestion (Olay Alımı):** Mobil veya web istemcisi (Client), öğrencinin tıklamalarını, sayfada kalma süresini ve ders başlama/bitirme olaylarını şifrelenmiş paketler halinde bir API Gateway'e iletir.
+2.  **Stream Processing (Akan Veri İşleme):** Veri paketleri Apache Kafka topic'lerine yazılır. Apache Flink veya Spark Streaming kullanılarak (sistem ihtiyacına göre), bu veriler gerçek zamanlı (real-time) olarak zaman pencerelerine (time windows) bölünür (ör. son 10 dakika, son 1 saat, son 1 hafta).
+3.  **Feature Store:** İşlenmiş metrikler (ör. `average_response_time`, `skip_rate`) düşük gecikmeli bir Feature Store'a (ör. Redis tabanlı bir önbelleğe) yazılır.
+4.  **Inference (Tahmin):** Kural motoru, her 5 dakikada bir veya belirli bir tetikleyici oluştuğunda Feature Store'dan güncel durumu çeker ve LightGBM API'sine gönderir. Model, anlık risk skorunu ve en baskın SHAP özelliklerini döndürür.
+
+### 10.2 JSON Payload Örnekleri
+
+Sistem entegrasyonunu ve veri formatını daha iyi anlamak için, Model-Kural Motoru-LLM zinciri arasındaki JSON mesajlaşma yapıları aşağıda örneklendirilmiştir.
+
+**A. Kural Motorundan LightGBM Tahmin Servisine Giden İstek (Request):**
+```json
+{
+  "student_id": "c8x9d2k4",
+  "session_id": "ses_90123",
+  "timestamp": "2026-08-16T14:30:00Z",
+  "features": {
+    "total_session_duration_min": 45,
+    "idle_time_last_10m": 8.5,
+    "difficulty_level_chosen": "easy",
+    "historical_completion_rate": 0.65,
+    "time_of_day": 23.5
+  }
+}
+```
+
+**B. LightGBM Servisinin Kural Motoruna Döndüğü Yanıt (Response):**
+```json
+{
+  "risk_score": 0.82,
+  "predicted_segment": "Geceye Kayan",
+  "top_shap_features": [
+    {"feature": "time_of_day", "contribution": 0.45},
+    {"feature": "idle_time_last_10m", "contribution": 0.30}
+  ],
+  "action_required": true,
+  "confidence_interval": [0.75, 0.88]
+}
+```
+
+**C. Kural Motorundan LLM (GPT-3.5 Turbo) Servisine Giden Prompt İsteği:**
+```json
+{
+  "model": "gpt-3.5-turbo",
+  "temperature": 0.2,
+  "messages": [
+    {
+      "role": "system",
+      "content": "Sen özerkliği destekleyen uzman bir eğitim pedagojisi koçusun. Hedefin, kaygılı ebeveynlere çocuklarının 'Geceye Kayan' profiline uygun, yargılamadan uzak, yapıcı iletişim önerileri sunmaktır. 'Kesin', 'garanti', 'yüzde yüz' kelimelerini asla kullanma. LGS/YKS bağlamında kal."
+    },
+    {
+      "role": "user",
+      "content": "Veli profili: Yüksek kaygılı anne. Öğrenci segmenti: Geceye Kayan. Risk skoru: 0.82. Son 10 dakikada 8.5 dakika hareketsiz kaldı ve saat çok geç. Veliye gönderilecek 150 kelimeyi aşmayan, empati odaklı ve eyleme geçirilebilir bir SMS/Bildirim metni oluştur."
+    }
+  ]
+}
+```
+
+Bu yapısal JSON akışı, gecikmeyi (latency) en aza indirerek sistemin her bir parçasının birbirinden bağımsız şekilde ölçeklenmesine olanak tanır. Kural motoru, LLM yanıtını aldıktan sonra, velinin saat dilimini ve iletişim tercihlerini (SMS, Push Notification, Email) kontrol ederek mesajın doğru zamanda iletilmesini sağlar. Örneğin, "Geceye Kayan" profilinde saat gece 01:00 ise, kural motoru bu LLM çıktısını "Cool-off queue" (bekleme kuyruğu) içine atar ve mesaj veliye sabah 09:00'da gönderilir. Bu durum doğrudan "Bildirim Aksiyonu Tamamlama Oranı"nı ve sistemin organik entegrasyon algısını yükseltir.
+
+## 11. LLM Prompt Mühendisliği ve Model Güvenliği (Guardrails)
+
+LLM katmanı, marka itibarını ve güvenliğini doğrudan etkileyen bir dışa vurum (output) noktasıdır. Üretilen hatalı bir içerik (halüsinasyon), velinin uygulamaya güvenini derhal sıfırlayarak anında churn ile sonuçlanabilir. Bu yüzden GPT-3.5 Turbo ile etkileşime girerken çok katmanlı bir Prompt Mühendisliği (Prompt Engineering) ve Çıktı Doğrulama (Guardrails) yapısı geliştirilmiştir.
+
+### 11.1 Çoklu Ajan Çerçevesi (Multi-Agent Framework) ve Çıktı Doğrulaması
+
+AI Personal Coach, sadece tek bir LLM çağrısı yapmak yerine, doğruluğu artırmak için zincirleme bir Doğrulama Ajanı (Validation Agent) kullanır:
+1.  **Üretici Ajan (Generator Agent):** Kural motorundan gelen metriklerle veliye yönelik ilk taslağı oluşturur.
+2.  **Denetleyici Ajan (Critic / Guardrail Agent):** Üretilen taslağı alır ve 3 katı kural üzerinden denetler:
+    *   Kural 1: Yargılayıcı bir dil içeriyor mu? (Örn. "Çocuğunuz ders çalışmıyor")
+    *   Kural 2: KVKK'ya veya veri gizliliğine aykırı bir ifşa var mı? (Örn. "Arkadaşıyla mesajlaştı" yerine "Platform dışında vakit geçirdi" kullanılmalı).
+    *   Kural 3: Pazarlama garantisi veren yasaklı kelimeler (kesin, garanti, kazanacak) geçiyor mu?
+
+Eğer Denetleyici Ajan "Geçti" (Pass) yanıtı verirse, mesaj kullanıcıya iletilir. Aksi takdirde "Reddedildi" (Fail) yanıtı döner ve önceden yazılmış, statik olarak onaylanmış standart bir pedagojik şablon (fallback template) veliye gönderilir. Bu güvenlik ağı, marka riskini sıfıra indirirken **Denemeden Ücretliye Geçiş Oranı** (Trial-to-Paid) açısından sistemin "güvenilir ve profesyonel" algısını (Brand Trust) radikal biçimde pekiştirir.
+
+
+## 12. MLOps, Sürekli Entegrasyon ve Sürekli Dağıtım (CI/CD) Altyapısı
+
+Pazarlama odaklı makine öğrenmesi projelerinde, bir modelin laboratuvar (Jupyter Notebook) ortamında gösterdiği performans ile canlı (production) ortamda gösterdiği performans arasında ciddi bir uçurum olabilir. Bu uçurum, eğitim verisi ile canlı veri arasındaki yapısal veya anlamsal farklardan (Data Skew / Concept Drift) kaynaklanır. AI Personal Coach projesinde bu riski minimize etmek için uçtan uca, tamamen otomatikleştirilmiş bir MLOps ve CI/CD (Sürekli Entegrasyon / Sürekli Dağıtım) boru hattı kurulmuştur.
+
+### 12.1 Veri Sürümleme (Data Versioning) ve Model Kayıt Defteri (Model Registry)
+
+Aylık bazda binlerce yeni kullanıcının sisteme katıldığı bir senaryoda, her hafta toplanan tıklama verilerinin karakteristiği değişebilir. Örneğin, deneme sınavlarının yaklaştığı bir ayda "Kaygıyla Erteleyen" profil sayısında anormal bir artış gözlemlenebilir. 
+Sistemimizde verilerin tutarlılığını sağlamak için DVC (Data Version Control) aracı kullanılarak her eğitim verisi (dataset) tıpkı bir kod bloğu gibi Git üzerinden sürümlenmektedir (versioning).
+
+LightGBM modellerinin her bir yeni versiyonu eğitildiğinde (retraining), MLflow tabanlı bir "Model Kayıt Defteri"ne (Model Registry) kaydedilir. MLflow üzerinde:
+*   Modelin hiperparametreleri (learning rate, max depth).
+*   Performans metrikleri (Validation LogLoss, F1 Score).
+*   En önemlisi, Pazarlama Etki Metrikleri (O modelin önceki versiyonuna kıyasla simüle edilmiş **90 Günlük Veli Elde Tutma (Retention) Oranı**).
+loglanmaktadır. Eğer yeni eğitilen model, doğruluk metriklerinde bir önceki versiyonu geçemezse veya yanlış pozitif (false positive) oranı artarsa, CI/CD boru hattı (GitHub Actions veya GitLab CI) modelin canlı ortama (production) geçmesini otomatik olarak durdurur (rollback).
+
+### 12.2 A/B Testleri ve Gölge Dağıtım (Shadow Deployment)
+
+Yeni bir kural motoru senaryosu veya yeni bir LightGBM versiyonu geliştirildiğinde, doğrudan tüm kullanıcı tabanına sunulmaz. Sistem, algoritmik güncellemeleri pazarlama KPI'ları üzerinde kanıtlamak için iki katmanlı bir dağıtım stratejisi izler:
+
+1.  **Shadow Deployment (Gölge Dağıtım):** Yeni model canlı ortama alınır ancak verdiği kararlar kullanıcılara gösterilmez (sadece veritabanına loglanır). Gölge modelin ürettiği risk skorları ile mevcut modelin skorları arka planda karşılaştırılır. Eğer yeni model "Yarıda Bırakan" bir öğrenciyi eski modelden 5 dakika daha erken tespit edebiliyorsa, ikinci aşamaya geçilir.
+2.  **A/B Testi (Canary Release):** Kullanıcı tabanının rastgele seçilmiş %10'u "B Grubu"na (yeni model), %90'ı ise "A Grubu"na (eski model) atanır. 14 günlük bir sprint sonunda, B grubundaki **Bildirim Aksiyonu Tamamlama Oranı** ve **Haftalık Rapor Açılma Oranı** istatistiksel olarak anlamlı bir (p < 0.05) iyileşme gösteriyorsa, yeni model tüm sisteme (100%) açılır. 
+
+Bu veri güdümlü ve son derece ihtiyatlı MLOps süreçleri, **LTV / CAC Oranı** üzerinde dramatik düşüşlere yol açabilecek "hatalı bir güncelleme" (bad release) senaryosunu tamamen engeller. Teknoloji ekibinin her kodu, doğrudan pazarlama departmanının churn oranlarıyla senkronize edilmiştir.
+
+## 13. Edge Computing (Uç Bilişim) ve Mobil İstemci Optimizasyonu
+
+Günümüzde pek çok EdTech platformu yoğun hesaplama (heavy computation) gerektiren işlemleri bulut sunucularına (Cloud) yaptırır. Ancak sürekli sunucuya ping atmak, hem bulut maliyetlerini (AWS/GCP faturalarını) şişirir hem de kullanıcının internet bağlantısının zayıf olduğu durumlarda bildirimlerin gecikmesine neden olur. Bu durumu çözmek için AI Personal Coach projesinde Edge Computing (Uç Bilişim) mimarisinden faydalanılmıştır.
+
+Öğrencinin anlık odaklanma süreleri, cihazın kilit ekranına geçip geçmediği veya aktif uygulamadan ne kadar koptuğu gibi yüksek frekanslı sinyaller (high-frequency signals), buluta saniyede bir veri göndermek yerine, doğrudan iOS veya Android işletim sisteminin arka plan worker'ları (lokal cihaz) üzerinde hesaplanır.
+*   **Lokal Kural Motoru:** Öğrencinin "Başlayamayan" bir döngüde olup olmadığı cihazın kendisinde hesaplanır. Yalnızca 10 dakikalık eşik (threshold) aşıldığında buluta tek bir JSON paketi gönderilir. Bu, sunucu trafiğini %80 oranında azaltarak muazzam bir maliyet optimizasyonu (**LTV / CAC Oranı** iyileştirmesi) sağlar.
+*   **Çevrimdışı Çalışabilirlik (Offline Graceful Degradation):** İnternet koptuğunda cihaz içi lokal yapay zeka (On-device ML), öğrencinin çalışma performansını kaydetmeye devam eder ve internet geldiğinde asenkron olarak verileri senkronize eder. Böylece veri kaybı önlenir ve haftalık veli raporlarının doğruluğu tehlikeye atılmaz.
+
+## 14. Sonuç ve Stratejik Değerlendirme
+
+AI Personal Coach projesinin teknolojik değerlendirmesi sonucunda, sistemin donanımsal ve yazılımsal her bir bileşeninin (LightGBM, GPT-3.5 Turbo, Kural Motoru, Kafka), platformun asıl varoluş amacı olan "churn problemini çözmek" hedefine hizalandığı açıkça görülmektedir.
+
+*   LightGBM'in hızı ve SHAP yorumlanabilirliği; siyah kutu (black-box) modellerinin aksine veliye güven ve şeffaflık sunmaktadır.
+*   GPT-3.5 Turbo'nun pedagojik üslup dönüştürme yeteneği, velinin baskıcı mesajlarını özerklik destekleyici koçluk iletişimine çevirerek ev içi çatışmayı azaltmaktadır.
+*   Kafka ve mikroservis tabanlı asenkron veri akışı, bildirimlerin tam zamanında (Just-in-Time) ulaşmasını sağlayarak **Bildirim Aksiyonu Tamamlama Oranı**nı maksimize etmektedir.
+*   Şeffaf ve sınırlı izleme mimarisi ise, KVKK uyumluluğunun yanı sıra genç kullanıcılar nezdinde platformun kabul görmesini sağlamaktadır.
+
+Neticede, bu projedeki teknoloji seçimi sadece "en modern aracı kullanmak" (hype-driven development) değil; psikolojik bir bariyeri aşmak, güven inşa etmek ve **90 Günlük Veli Elde Tutma Oranını** sürdürülebilir kılmak için yapılmış stratejik bir yatırımdır.
+
+
