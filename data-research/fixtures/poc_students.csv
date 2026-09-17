@@ -1,0 +1,16 @@
+student_id,name,exam_type,grade,sub_segment,vle_total_clicks,avg_focus_duration_mins,phone_distraction_10min_count,parent_report_open_rate,assessment_avg_score,late_submission_ratio,anxiety_survey_score,night_study_ratio,inactivity_days,last_active_time,unanswered_notif_count,parent_tone_preference
+STU_001,Ali,LGS,8,baslayamayan,28,12.5,2,0.2,54.0,0.65,7.5,0.15,4,20:45,2,empathetic
+STU_002,Zeynep,YKS_TYT_AYT,12,telefonla_dagilan,85,18.0,6,0.35,68.0,0.4,5.0,0.3,1,21:15,1,structured
+STU_003,Mert,YKS_TYT_AYT,Mezun,geceye_kayan,140,38.0,1,0.6,76.5,0.15,4.2,0.82,0,23:45,0,informative
+STU_004,Elif,LGS,8,yarida_birakan,45,14.0,4,0.3,58.0,0.5,6.8,0.2,3,20:10,2,empathetic
+STU_005,Can,YKS_TYT_AYT,11,kaygiyla_erteleyen,35,22.0,2,0.25,62.0,0.7,9.2,0.25,5,21:30,3,gentle
+STU_006,Defne,LGS,8,baslayamayan,18,8.0,3,0.15,48.0,0.8,8.0,0.1,6,19:50,4,structured
+STU_007,Burak,YKS_TYT_AYT,12,telefonla_dagilan,72,16.5,7,0.4,64.0,0.35,5.8,0.45,2,20:50,1,structured
+STU_008,Selin,YKS_TYT_AYT,Mezun,geceye_kayan,160,42.0,0,0.75,82.0,0.1,3.5,0.9,0,01:15,0,informative
+STU_009,Emir,LGS,8,yarida_birakan,60,15.0,3,0.45,60.0,0.45,6.2,0.15,1,21:05,0,empathetic
+STU_010,Irem,YKS_TYT_AYT,11,kaygiyla_erteleyen,40,25.0,1,0.5,66.0,0.55,8.5,0.2,3,20:20,1,gentle
+STU_011,Kaan,YKS_TYT_AYT,12,telefonla_dagilan,95,20.0,5,0.3,71.0,0.3,4.8,0.35,2,22:10,2,structured
+STU_012,Ece,LGS,8,baslayamayan,32,11.0,2,0.25,52.0,0.6,7.0,0.1,3,20:40,1,empathetic
+STU_013,Arda,YKS_TYT_AYT,Mezun,geceye_kayan,130,35.0,2,0.55,74.0,0.2,5.5,0.78,1,23:15,0,informative
+STU_014,Duru,YKS_TYT_AYT,11,yarida_birakan,50,13.5,3,0.35,59.0,0.52,6.5,0.18,4,20:30,2,empathetic
+STU_015,Kerem,LGS,8,kaygiyla_erteleyen,25,15.0,1,0.2,50.0,0.75,9.0,0.22,5,21:10,3,gentle

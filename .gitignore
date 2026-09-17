@@ -1,0 +1,12 @@
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS artifacts
+.DS_Store
+Thumbs.db

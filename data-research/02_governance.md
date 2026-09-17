@@ -49,6 +49,13 @@ Bu KPI’lar yalnızca tahmin modelinin F1 skoruna değil; **güvenilir, hukuka 
 | OS-level telefon telemetrisi yok | Bu teslimde `phone_events` sentetik/demo; mağaza ve platform kısıtları ayrı risk |
 | Domain ve zaman kayması | 2013–14 VLE ≠ 2026 mobil dikkat |
 
+### 3.4 PoC Test Fixtures ve Kontrollü Test Seti (`data-research/fixtures/`)
+
+Uçtan uca PoC pipeline'ının (K5) güvenle test edilebilmesi için 15 öğrencilik sentetik test veri seti (`poc_students.json` / `poc_students.csv`) hazırlanmıştır.
+- **Sıfır Gerçek PII:** İsimler sembolik ve sentetiktir; kimlik numarası, telefon veya IP verisi toplanmaz.
+- **5 Segment Temsili:** Her pedagojik profil (Başlayamayan, Yarıda Bırakan, Telefonla Dağılan, Kaygıyla Erteleyen, Geceye Kayan) için 3 adet temsili öğrenci barındırır.
+- **Deterministik Kural Testi:** Model risk skoru, telefon dikkat dağılma olayları ve inaktivite günleri gibi deterministik kural motoru girdilerini izole ve tekrarlanabilir biçimde simüle eder.
+
 Bu sınırlar bilerek şeffaf bırakılmıştır: uydurma pilot iddiası akademik dürüstlüğü zedeler. Verinin sonraki aşama değeri; (a) OULAD üzerinde tekrarlanabilir risk pipeline’ı, (b) ürün şeması ve etik kısıtların sentetikle uçtan uca gösterimi, (c) privacy-by-design kararlarının belgelenmesidir — sahada A/B ile kanıtlanmış retention lift iddiası değildir.
 
 ---

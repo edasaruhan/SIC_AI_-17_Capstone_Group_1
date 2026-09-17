@@ -137,10 +137,10 @@ Pazarlama retention tahminleme motoru için eğitilen **LightGBM** ve **Logistic
 Tech Review dokümanını yazan **Kişi 5**'in §4 (Comparison and Evaluation) bölümünde somut verilerle karşılaştırma yapabilmesi için ürettiğimiz baseline model sonuçları aşağıdaki tabloda özetlenmiştir:
 
 | Model Mimarisi | ROC-AUC | F1-Score | Precision | Recall | LogLoss | Çıkarım Süresi (Latency) | Pazarlama İhtiyacına Uygunluk |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Logistic Regression** | 0.6490 | 0.6172 | 0.6179 | 0.6164 | 0.6595 | **< 1 ms** | Yüksek yorumlanabilirlik, düşük karmaşıklık |
-| **LightGBM Classifier** | **0.6426** | **0.5666** | **0.6273** | **0.5166** | **0.6668** | **~ 4 ms** | **En Yüksek Başarı, Doğrusal Olmayan İlişkileri Yakalama** |
-| *Sequence Model (LSTM Proxy)* | *0.6810* | *0.6320* | *0.6410* | *0.6230* | *0.6310* | *~ 45 ms* | Yüksek hesaplama maliyeti, düşük açıklanabilirlik |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Logistic Regression** | **0.6490** | **0.6172** | 0.6179 | **0.6164** | **0.6595** | **< 1 ms** | Yüksek yorumlanabilirlik, güçlü doğrusal baseline |
+| **LightGBM Classifier** | 0.6426 | 0.5666 | **0.6273** | 0.5166 | 0.6668 | **~ 4 ms** | **Daha Düşük FP (120 vs 149), Yüksek Hassasiyet, Doğrusal Olmayan Ağaç Yapısı** |
+| *Sequence Model (LSTM Proxy)* | *0.6810* | *0.6320* | *0.6410* | *0.6230* | *0.6310* | *~ 45 ms* | Yüksek hesaplama maliyeti, düşük açıklanabilirlik [Proxy Result] |
 
 ### 5.1 Açıklanabilir AI (XAI) ve Veli Risk Gerekçelendirme Mekanizması
 
@@ -148,13 +148,13 @@ Kişi 5'in Technology Review (§4) bölümünde ele alacağı **Açıklanabilir 
 
 Sistem kara kutu (black-box) bir tahmin sunmak yerine veliye riskin kök nedenlerini açıklar:
 
-- **1. Baskın Sinyal (`phone_distraction_10min_count`)**: Odak bloğunda 10 dakikayı aşan telefon kullanımı, veli churn riskini artıran en baskın değişkendir (%34 önem payı).
-- **2. İkinci Baskın Sinyal (`parent_report_open_rate`)**: Velinin haftalık raporu açma oranı, churn'ü önleyen en güçlü koruyucu etkendir (%28 önem payı).
-- **Otomatik Veli Bildirim Cümlesi**: *"Bu hafta öğrencimizin 10 dk+ telefon uyarısı 4'e yükseldi ve haftalık rapor açılma oranı düştü. Churn riskini önlemek için bu haftaki raporu inceleyin."*
+- **1. Baskın Sinyal (`parent_report_open_rate`)**: Velinin haftalık raporu açma oranı, churn'ü önleyen en güçlü koruyucu değişkendir (169 ağaç bölünme önemi).
+- **2. İkinci Baskın Sinyal (`vle_total_clicks` & `phone_distraction_10min_count`)**: Toplam platform etkileşimi ve odak bloğunda 10 dakikayı aşan telefon kullanımı erken risk tespitinde kritik belirleyicidir.
+- **Otomatik Veli Bildirim Cümlesi**: *"Bu hafta öğrencimizin odak bloğunda telefon uyarısı arttı ve haftalık rapor açılma oranı düştü. Churn riskini önlemek için bu haftaki raporu inceleyin."*
 
 ### Kişi 5 için Pazarlama ve Teknoloji Değerlendirme Çıkarımları:
-1. **LightGBM Tercih Gerekçesi**: LightGBM modeli, veliye churn riskinin gerekçesini açıklama (SHAP / Feature Importance üzerinden: *"Çocuğunuz bu hafta 10 dk+ telefon uyarısını 5 kez aştı"*) imkanı sunduğu için kapalı kara kutu sekans modellerine göre pazarlama etiği ve şeffaflık açısından üstündür.
-2. **Maliyet & Ölçeklenebilirlik**: LightGBM modeli sunucu maliyetlerini (CPU tabanlı çıkarım) minimumda tutarak kullanıcı başına aylık altyapı maliyetini **< $0.02** seviyesinde kalmasını sağlar.
+1. **Model Tercih Gerekçesi**: Lojistik Regresyon sürekli değişkenlerde hafifçe daha yüksek genel F1 sağlasa da, LightGBM **%62.73 Precision** değeri ve **120 False Positive** (Lojistik Regresyon'un 149'una kıyasla daha az gereksiz panik bildirimi) üretmesi sayesinde operasyonel olarak tercih edilmiştir. Ayrıca karar ağaçları karmaşık etkileşimleri ve kural motoru eşiklerini doğal olarak destekler.
+2. **Maliyet & Ölçeklenebilirlik**: LightGBM modeli sunucu maliyetlerini (CPU tabanlı çıkarım) minimumda tutarak kullanıcı başına aylık altyapı maliyetini **< $0.02** seviyesinde tutar.
 
 ---
 

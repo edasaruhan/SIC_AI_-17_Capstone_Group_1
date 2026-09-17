@@ -1,6 +1,6 @@
 # AI Personal Coach — Pazarlama Teknoloji Değerlendirmesi
 
-[![Status: In Progress](https://img.shields.io/badge/Status-In_Progress-yellow.svg)](#) [![Deadline: Aug 16](https://img.shields.io/badge/Deadline-Aug_16-red.svg)](#) 
+[![Status: PoC Ready](https://img.shields.io/badge/Status-PoC_Ready-brightgreen.svg)](#) [![Test Suite: Passing](https://img.shields.io/badge/Test_Suite-8_Passing-brightgreen.svg)](#) [![Branch: feat/capstone-poc-pipeline](https://img.shields.io/badge/Branch-feat%2Fcapstone--poc--pipeline-blue.svg)](#)
 
 ## Proje Özeti
 
@@ -25,13 +25,13 @@ Platformun tüm teknolojik mimarisi, aşağıdaki temel başarı metriklerini (K
 
 ### Ana KPI: 90-Günlük Veli Retention (Elde Tutma) Oranı
 
-| Metrik | Tanım | Hedef (Target) | Sektör Ortalaması |
+| Metrik | Tanım | Hedef [Target] | Sektör Ortalaması [Design Assumption] |
 |--------|-------|----------------|-------------------|
-| **90-Gün Veli Retention** | 90. günün sonunda aktif kalan abonelerin, başlayanlara oranı | **65%+** | %40–50 |
-| **30-Gün Retention** | Kritik ilk ayın sonunda (30. gün) aktif kalan aboneler | **80%+** | %50–60 |
-| **Trial → Paid Conversion** | Ücretsiz deneme (Free Trial) sürecinden ücretli pakete geçiş | **25%+** | %15–20 |
-| **Haftalık Rapor Açılma** | Push bildirimlerine tıklanarak haftalık detaylı rapora erişim oranı | **35%+** | %20–25 |
-| **Bildirim Yanıt Oranı** | Veliye gönderilen aksiyon odaklı Push Notification CTR (Tıklama) oranı | **18%+** | %8–12 |
+| **90-Gün Veli Retention** | 90. günün sonunda aktif kalan abonelerin, başlayanlara oranı | **65%+** [Target] | %40–50 |
+| **30-Gün Retention** | Kritik ilk ayın sonunda (30. gün) aktif kalan aboneler | **80%+** [Target] | %50–60 |
+| **Trial → Paid Conversion** | Ücretsiz deneme (Free Trial) sürecinden ücretli pakete geçiş | **25%+** [Target] | %15–20 |
+| **Haftalık Rapor Açılma** | Push bildirimlerine tıklanarak haftalık detaylı rapora erişim oranı | **35%+** [Target] | %20–25 |
+| **Bildirim Yanıt Oranı** | Veliye gönderilen aksiyon odaklı Push Notification CTR (Tıklama) oranı | **18%+** [Target] | %8–12 |
 
 ---
 
@@ -215,7 +215,7 @@ Projenin arkasında çalışan yapay zeka ajanlarının mimari anatomisi.
   - **Yorumlanabilirlik:** Modelin kararları (feature importance) veliye anlaşılır bir dille açıklanabilir.
   - **Hız:** Tahmin süresi <100ms seviyesindedir. Günde 100.000'den fazla öğrenciyi analiz edebilecek kapasitededir.
   - **Maliyet:** Açık kaynaklıdır ve GPU gerektirmez (no GPU).
-  - **Doğruluk:** Pazarlama müdahaleleri için oldukça yeterli olan ~0.78 AUC skoruna sahiptir.
+  - **Doğruluk [Proxy Baseline]:** Doğrulanmış deneyde 0.6426 ROC-AUC, %62.73 Precision ve %56.66 F1-Score (Test seti N=813, 120 False Positive). Sürekli değişkenli doğrusal Lojistik Regresyon baseline'ına (0.6490 ROC-AUC) kıyasla daha düşük yanlış alarm (FP) ürettiği ve ağaç tabanlı karar gerekçelendirmesi (XAI Feature Importance) sunduğu için operasyonel olarak tercih edilmiştir.
 
 ### 2. Message Personalization (Mesaj Kişiselleştirme - LLM)
 - **Model:** OpenAI GPT-3.5 Turbo
@@ -309,6 +309,33 @@ Sistemin genel bağlamını kavramak için önerilen okuma sırası:
 4. **[`data-research/`](./data-research/)** — Veri altyapısı ve metodoloji.
 5. **[`technology-review/tech_review.md`](./technology-review/tech_review.md)** — Teknoloji değerlendirmesi (Technology evaluation).
 
+### 🚀 PoC & Model Çalıştırma (Hızlı Başlangıç)
+
+Uçtan uca AI pipeline'ını ve makine öğrenmesi baseline modellerini terminalden çalıştırmak için:
+
+1. **Baseline Modellerini Eğitme & Değerlendirme (K3):**
+   ```bash
+   python data-research/modeling/baseline_models.py
+   ```
+   *Çıktılar:* `data-research/modeling/baseline_results.csv`, karışıklık matrisleri (`confusion_matrix_*.png`) ve serialize edilmiş modeller.
+
+2. **Uçtan Uca PoC Pipeline'ını Çalıştırma (K5):**
+   ```bash
+   # Tüm 15 öğrenci için risk tahmini, segmentasyon ve veli mesajlarını üretme
+   python poc_pipeline.py --all
+
+   # Tek bir öğrenci ID'si ile detaylı analiz kartı görüntüleme
+   python poc_pipeline.py --student STU_002
+
+   # JSON formatında çıktı alma
+   python poc_pipeline.py --student STU_002 --json
+   ```
+
+3. **Otomatik Test Paketini Koşma:**
+   ```bash
+   pytest tests/test_poc_pipeline.py -v
+   ```
+
 ### Kontribüsyon (Katkı Sağlama)
 - Kendinize atanmış bir özellik dalı (branch) oluşturun (`feat/[görev]-[kişi]`).
 - Kendi dosyanız veya klasörünüz üzerinde geliştirme yapın.
@@ -317,11 +344,11 @@ Sistemin genel bağlamını kavramak için önerilen okuma sırası:
 
 ### Quality Checklist (Kalite Kontrol)
 PR açmadan önce aşağıdaki listeyi onaylayın:
-- [ ] Bütün projede aynı terminoloji (KPI adları, segmentler, ürün adları) kullanıldı mı?
-- [ ] Atıflar APA formatında `references.bib` içerisine eklendi mi?
-- [ ] Pazarlama bağlantısı net bir şekilde açıklandı mı?
-- [ ] KVKK compliance (uyumluluk) denetimi (check) yapıldı mı?
-- [ ] Dosyalar UTF-8 encoding ile (Türkçe karakter sorunsuz) kaydedildi mi?
+- [x] Bütün projede aynı terminoloji (KPI adları, segmentler, ürün adları) kullanıldı mı?
+- [x] Atıflar APA formatında `references.bib` içerisine eklendi mi?
+- [x] Pazarlama bağlantısı net bir şekilde açıklandı mı?
+- [x] KVKK compliance (uyumluluk) denetimi (check) yapıldı mı?
+- [x] Dosyalar UTF-8 encoding ile (Türkçe karakter sorunsuz) kaydedildi mi?
 
 ---
 
@@ -333,5 +360,5 @@ Herhangi bir soru, öneri veya iş akışı problemi (issue) için:
 3. Team Slack kanalımız üzerinden doğrudan ekip üyesine mesaj atın.
 
 ---
-**Last Updated**: 16 Ağustos 2026
-**Status**: In Progress → Submission Aug 16, 23:59
+**Last Updated**: Eylül 2026  
+**Status**: PoC Pipeline & Baseline Modeling Completed (Ready for Review)
