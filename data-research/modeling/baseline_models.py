@@ -2,6 +2,7 @@
 """
 AI Personal Coach — Baseline Modeling Pipeline (K3: Data Lead)
 Reproducible training & evaluation of Logistic Regression and LightGBM models.
+Includes Threshold Tuning and SHAP (Explainable AI) analysis.
 Dataset: data-research/oulad_synthetic_processed.csv (3,250 samples)
 Target: churn_90d (Binary proxy label)
 """
@@ -13,6 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import shap
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
@@ -39,7 +41,7 @@ def run_baseline_modeling():
     df = pd.read_csv(data_path)
     print(f"[*] Dataset shape: {df.shape}")
 
-    # Feature selection matching K3 scope
+    # Feature selection
     drop_cols = ["student_id", "exam_type", "grade", "sub_segment", "churn_90d"]
     feature_cols = [col for col in df.columns if col not in drop_cols]
     target_col = "churn_90d"
@@ -124,21 +126,72 @@ def run_baseline_modeling():
     print(f"\n[*] Saved benchmark results to {results_csv.name}:\n")
     print(results_df.to_string(index=False))
 
-    # Feature Importance for LightGBM
+    # --- STEP 1: Threshold Tuning for Operational Retention ---
     lgb_model = trained_models["LightGBM Classifier"]
-    importance_df = pd.DataFrame({
-        "Feature": feature_cols,
-        "Importance": lgb_model.feature_importances_,
-    }).sort_values(by="Importance", ascending=False)
-    print("\n[*] LightGBM Feature Importances:")
-    print(importance_df.to_string(index=False))
+    lgb_probs = lgb_model.predict_proba(X_test)[:, 1]
 
-    # Serialize trained models for inference / pipeline use
-    joblib.dump(trained_models["LightGBM Classifier"], base_dir / "lightgbm_model.joblib")
+    thresholds = [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60]
+    thresh_records = []
+    for t in thresholds:
+        t_preds = (lgb_probs >= t).astype(int)
+        t_cm = confusion_matrix(y_test, t_preds)
+        thresh_records.append({
+            "Threshold": t,
+            "Recall": round(recall_score(y_test, t_preds), 4),
+            "Precision": round(precision_score(y_test, t_preds), 4),
+            "F1-Score": round(f1_score(y_test, t_preds), 4),
+            "Accuracy": round(accuracy_score(y_test, t_preds), 4),
+            "Captured_Churners_TP": int(t_cm[1, 1]),
+            "Missed_Churners_FN": int(t_cm[1, 0]),
+            "False_Alarms_FP": int(t_cm[0, 1]),
+        })
+
+    thresh_df = pd.DataFrame(thresh_records)
+    thresh_csv = base_dir / "threshold_tuning_results.csv"
+    thresh_df.to_csv(thresh_csv, index=False)
+    print("\n[*] Threshold Tuning Analysis for LightGBM (Operational Retention):")
+    print(thresh_df.to_string(index=False))
+
+    # Plot Precision-Recall Tradeoff
+    plt.figure(figsize=(6, 4))
+    plt.plot(thresh_df["Threshold"], thresh_df["Recall"], marker="o", label="Recall (Yakalama)")
+    plt.plot(thresh_df["Threshold"], thresh_df["Precision"], marker="s", label="Precision (Kesinlik)")
+    plt.plot(thresh_df["Threshold"], thresh_df["F1-Score"], marker="^", label="F1-Score")
+    plt.axvline(0.40, color="red", linestyle="--", label="Optimum Eşik (0.40)")
+    plt.title("LightGBM Eşik Optimizasyonu (Precision vs Recall)")
+    plt.xlabel("Karar Eşiği (Threshold)")
+    plt.ylabel("Skor")
+    plt.legend()
+    plt.grid(True, linestyle=":", alpha=0.6)
+    plt.tight_layout()
+    plt.savefig(base_dir / "threshold_tuning_plot.png", dpi=300)
+    plt.close()
+    print("  -> Saved threshold tuning plot to threshold_tuning_plot.png")
+
+    # --- STEP 2: Explainable AI (SHAP TreeExplainer) ---
+    print("\n[*] Initializing SHAP TreeExplainer for LightGBM...")
+    explainer = shap.TreeExplainer(lgb_model)
+    shap_values = explainer.shap_values(X_test)
+
+    # Global SHAP Summary Plot
+    plt.figure(figsize=(8, 5))
+    if isinstance(shap_values, list):
+        shap.summary_plot(shap_values[1], X_test, show=False)
+    else:
+        shap.summary_plot(shap_values, X_test, show=False)
+    plt.title("SHAP Feature Impact on Churn Risk (XAI)", fontsize=12)
+    plt.tight_layout()
+    plt.savefig(base_dir / "shap_summary.png", dpi=300, bbox_inches="tight")
+    plt.close()
+    print("  -> Saved global SHAP summary plot to shap_summary.png")
+
+    # Serialize trained models & explainer
+    joblib.dump(lgb_model, base_dir / "lightgbm_model.joblib")
     joblib.dump(trained_models["Logistic Regression"], base_dir / "logistic_model.joblib")
-    print(f"[*] Serialized model artifacts to {base_dir}")
+    joblib.dump(explainer, base_dir / "shap_explainer.joblib")
+    print(f"[*] Serialized model and SHAP artifacts to {base_dir}")
 
-    return results_df
+    return results_df, thresh_df
 
 
 if __name__ == "__main__":

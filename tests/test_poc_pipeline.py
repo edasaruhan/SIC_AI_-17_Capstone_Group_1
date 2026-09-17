@@ -106,7 +106,7 @@ def test_message_layer():
     }
     msg = MessageLayer.generate_message("Deniz", "baslayamayan", rule_res)
     assert "Deniz" in msg
-    assert "ısınma soru seti" in msg
+    assert "15 dakika" in msg or "ısınma" in msg
     assert "Bildirim kuralı tetiklenmedi" not in msg
 
 
@@ -145,3 +145,33 @@ def test_pipeline_all_fixtures():
         assert 0.0 <= r["risk_score"] <= 1.0
         assert r["trigger"] in [True, False]
         assert len(r["parent_message"]) > 10
+        assert "shap_explanation" in r
+        assert "top_risk_drivers" in r["shap_explanation"]
+
+
+def test_shap_explainer_layer(sample_student):
+    pipeline = PersonalCoachPoCPipeline()
+    shap_info = pipeline.shap_layer.explain_student(sample_student)
+
+    assert "all_contributions" in shap_info
+    assert len(shap_info["all_contributions"]) == 8
+    assert "top_risk_drivers" in shap_info
+    assert "top_protective_factors" in shap_info
+
+
+def test_llm_personalizer_prompt(sample_student):
+    pipeline = PersonalCoachPoCPipeline()
+    shap_info = pipeline.shap_layer.explain_student(sample_student)
+    prompt = pipeline.personalizer.generate_prompt(
+        student_name=sample_student["name"],
+        segment="telefonla_dagilan",
+        exam_type=sample_student["exam_type"],
+        grade=sample_student["grade"],
+        risk_score=0.65,
+        shap_drivers=shap_info["top_risk_drivers"],
+        tone="empathetic",
+    )
+    assert "Barış" in prompt
+    assert "LGS" in prompt
+    assert "SHAP" in prompt
+

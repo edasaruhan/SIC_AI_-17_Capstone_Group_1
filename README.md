@@ -336,6 +336,12 @@ Uçtan uca AI pipeline'ını ve makine öğrenmesi baseline modellerini terminal
    pytest tests/test_poc_pipeline.py -v
    ```
 
+4. **İnteraktif Web Demosunu Başlatma (Streamlit Dashboard):**
+   ```bash
+   streamlit run app.py
+   ```
+   *Özellikler:* Canlı risk analizi, interaktif SHAP waterfall grafiği, What-If senaryo simülatörü ve mobil veli bildirimi mockup önizlemesi.
+
 ### Kontribüsyon (Katkı Sağlama)
 - Kendinize atanmış bir özellik dalı (branch) oluşturun (`feat/[görev]-[kişi]`).
 - Kendi dosyanız veya klasörünüz üzerinde geliştirme yapın.
