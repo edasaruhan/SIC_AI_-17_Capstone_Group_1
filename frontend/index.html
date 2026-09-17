@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Personal Coach — EdTech Erken Churn Önleme & Veli Retention Platformu</title>
+  <meta name="description" content="LGS ve YKS sınav hazırlık sürecinde öğrencilerin dersten kopuşunu önceden tahmin eden, veli-öğrenci iletişimini çatışmasız koçluğa dönüştüren yapay zeka destekli EdTech retention sistemi.">
+  <meta name="author" content="SIC AI-17 Capstone Group 1">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="#home" class="brand-logo" onclick="switchView('landing')">
+        <div class="brand-icon">🎯</div>
+        <div class="brand-text">
+          <span>AI Personal Coach</span>
+          <span>EdTech Retention Engine</span>
+        </div>
+      </a>
+
+      <!-- View Switcher -->
+      <div class="nav-switcher">
+        <button class="switch-btn active" id="btn-view-landing" onclick="switchView('landing')">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+          Pazarlama Vitrini
+        </button>
+        <button class="switch-btn" id="btn-view-portal" onclick="switchView('portal')">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Veli Portalı (Canlı Demo)
+        </button>
+        <button class="switch-btn" id="btn-view-b2b" onclick="switchView('b2b')">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+          EdTech ROI Merkezi
+        </button>
+      </div>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <div class="sic-pill">
+          <span class="sic-dot"></span>
+          Samsung Innovation Campus
+        </div>
+        <button class="btn-trial" onclick="switchView('portal')">Canlı Deneyimle</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       VIEW 1: HIGH-CONVERTING MARKETING LANDING PAGE
+       ============================================================ -->
+  <main id="view-landing" class="view-panel active">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="badge-tag">
+          <span>🚀</span> SIC AI-17 Capstone · Pazarlamada Yapay Zeka Bitirme Projesi
+        </div>
+        <h1 class="hero-title">
+          Sınav Senesinde Evdeki Çatışmayı Bitiren, <br>
+          <span class="grad-text">Yapay Zekalı Büyüme & Koçluk Motoru</span>
+        </h1>
+        <p class="hero-subtitle">
+          LGS ve YKS hazırlığında öğrencilerin dersten kopuşunu <strong>14 gün önceden tahmin edin</strong>. Suçlayıcı bildirimler yerine özerklik destekli koçluk sunarak 90 günlük veli abonelik kaybını (churn) durdurun.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn-primary-lg" onclick="switchView('portal')">
+            <span>✨</span> Canlı Veli Portalını Dene
+          </button>
+          <button class="btn-secondary-lg" onclick="switchView('b2b')">
+            <span>📊</span> EdTech Gelir & LTV Hesapla
+          </button>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="metrics-strip">
+          <div class="metric-item">
+            <div class="metric-val green">%65+</div>
+            <div class="metric-lbl">90-Gün Veli Retention</div>
+            <div class="metric-sub">Sektör Ortalaması: %40–50</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val blue">%82.4</div>
+            <div class="metric-lbl">Kopuş Yakalama (Recall)</div>
+            <div class="metric-sub">Eşik: 0.40 Maliyet-Duyarlı Model</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val purple">&lt; 5 ms</div>
+            <div class="metric-lbl">Model Çıkarım Hızı</div>
+            <div class="metric-sub">LightGBM + TreeSHAP CPU</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val amber">&lt; $0.05</div>
+            <div class="metric-lbl">Aylık LLM Maliyeti / Öğrenci</div>
+            <div class="metric-sub">GPT-3.5 Turbo + Kural Şablonu</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual-User Marketing Paradox Section -->
+    <section class="container" style="padding: 2rem 0 4rem;">
+      <div class="section-header">
+        <div class="section-tag">Pazarlama Paradoksu</div>
+        <h2 class="section-title">Parayı Veli Öder, Veriyi Öğrenci Üretir</h2>
+        <p class="section-desc">
+          EdTech aboneliklerinin %45'i ilk 30–90 günde iptal edilir. Çünkü öğrencinin netlerinin yükselmesi 8–12 hafta sürerken, velinin sabır penceresi 4. haftada kapanır.
+        </p>
+      </div>
+
+      <div class="dual-user-grid">
+        <!-- Veli Kartı -->
+        <div class="dual-card">
+          <div class="dual-badge badge-parent">Ekonomik Alıcı (Veli)</div>
+          <h3 class="dual-title">"Çocuğum çalışmıyor, param boşa mı gidiyor?"</h3>
+          <div class="dual-pain-box">
+            <strong>Mevcut Durum:</strong> Uygulama sessiz kaldığında veli şüpheye düşer; ham bildirim ("Çocuğunuz 3 gündür girmedi") geldiğinde evde kavga çıkar ve abonelik iptal edilir.
+          </div>
+          <div class="dual-solution-box">
+            <strong>AI Personal Coach Çözümü:</strong> Veliye çocuğunu suçlamadan yaklaşabileceği pedagojik sohbet kalıpları ve net ilerleme kanıtları sunar.
+          </div>
+          <ul class="feature-check-list">
+            <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Haftalık Şeffaf Değer ve İlerleme Raporu</li>
+            <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Suçlamasız, Empatik Ebeveyn Diyalog Rehberi</li>
+            <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Gece Bildirim Yasağı (22:00–09:00 Sessiz Saatler)</li>
+          </ul>
+        </div>
+
+        <!-- Öğrenci Kartı -->
+        <div class="dual-card">
+          <div class="dual-badge badge-student">Kullanan Genç (Öğrenci)</div>
+          <h3 class="dual-title">"Beni gözetlemeyin, kendi başıma başarabilirim!"</h3>
+          <div class="dual-pain-box">
+            <strong>Mevcut Durum:</strong> Telefon kilitleyen ekran süresi kısıtlamaları öğrencide direnç ve hile arayışı yaratır. Casus yazılım algısı güveni yok eder.
+          </div>
+          <div class="dual-solution-box">
+            <strong>AI Personal Coach Çözümü:</strong> Sadece öğrencinin başlattığı odak bloğunda aktiftir. 10 dakikalık mikro-eylemlerle başlama felcini kırar.
+          </div>
+          <ul class="feature-check-list">
+            <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Yalnızca İsteğe Bağlı Çalışma Bloklarında Takip</li>
+            <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Eğitim Uygulamaları Beyaz Listesi (Whitelist)</li>
+            <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Öz-Belirleme Kuramı Odaklı Mikro-Başarı Ödülleri</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tone Reframing Interactive Showcase -->
+    <section class="container" style="padding: 0 0 4.5rem;">
+      <div class="section-header">
+        <div class="section-tag">Bilişsel & Pedagojik Dil Katmanı</div>
+        <h2 class="section-title">Yapay Zeka ile Üslup Dönüşümü</h2>
+        <p class="section-desc">
+          Aynı veri, iki tamamen zıt pazarlama sonucu üretir: Biri veliyi öfkelendirip aboneliği iptal ettirir, diğeri aileyi yakınlaştırıp sadakati perçinler.
+        </p>
+      </div>
+
+      <div class="reframing-container">
+        <div class="reframing-grid">
+          <!-- Eski Suçlayıcı Dil -->
+          <div class="tone-box bad">
+            <span class="tone-tag bad">❌ Geleneksel Alarm (Suçlayıcı)</span>
+            <div class="tone-speech">
+              "Öğrenciniz Zeynep son 5 gündür matematik testlerine girmedi ve telefon kullanımı 2 katına çıktı!"
+            </div>
+            <div class="tone-consequence">
+              <strong>Sonuç:</strong> Veli akşam kapıyı vurarak odaya girer: "Bu telefonu elinden alıyorum!" Öğrenci içine kapanır, veli 2 gün sonra EdTech aboneliğini iptal eder.
+            </div>
+          </div>
+
+          <!-- Ok İkonu -->
+          <div class="arrow-icon-col">
+            ➔
+          </div>
+
+          <!-- Yeni AI Destekli Dil -->
+          <div class="tone-box good">
+            <span class="tone-tag good">✅ AI Personal Coach (Özerklik Destekli)</span>
+            <div class="tone-speech">
+              "Zeynep bu hafta denemelerde yüksek çaba gösterdi. Matematikte küçük bir tıkanma hissediyor olabilir. Akşam ona 'Matematikte takıldığın bir konu var mı, beraber 10 dk mola çayı içelim mi?' diyebilirsiniz."
+            </div>
+            <div class="tone-consequence">
+              <strong>Sonuç:</strong> Çatışma çözülür, öğrenci rahatlar ve masaya döner. Veli uygulamanın evdeki huzura katkısını görerek aboneliğini 12 ay boyunca sürdürür.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Behavioral Personas Showcase -->
+    <section class="container" style="padding: 0 0 4.5rem;">
+      <div class="section-header">
+        <div class="section-tag">Davranışsal Segmentasyon</div>
+        <h2 class="section-title">5 Farklı Öğrenci Segmenti, 5 Özel Strateji</h2>
+        <p class="section-desc">
+          Her öğrencinin dersten kopma sebebi farklıdır. LightGBM modelimiz etkileşim desenlerini analiz ederek öğrencileri otomatik olarak bu 5 segmentten birine atar.
+        </p>
+      </div>
+
+      <div class="personas-grid">
+        <div class="persona-card" onclick="selectPersonaDemo('baslayamayan')">
+          <div class="persona-icon">⏳</div>
+          <div class="persona-title">Başlayamayan</div>
+          <div class="persona-trigger">Kayıt sonrası ilk 3 günde &lt;1 saat aktivite. Başlama felci yaşıyor.</div>
+          <div class="persona-strategy">5 Dakikalık Kolay Isınma Görevi</div>
+        </div>
+        <div class="persona-card active" onclick="selectPersonaDemo('telefonla_dagilan')">
+          <div class="persona-icon">📱</div>
+          <div class="persona-title">Telefonla Dağılan</div>
+          <div class="persona-trigger">Çalışırken sık sık bildirimlere kayıyor, odak süresi &lt;15 dk.</div>
+          <div class="persona-strategy">10 Dk Kuralı & Telefon Mola Kutusu</div>
+        </div>
+        <div class="persona-card" onclick="selectPersonaDemo('geceye_kayan')">
+          <div class="persona-icon">🌙</div>
+          <div class="persona-title">Geceye Kayan</div>
+          <div class="persona-trigger">Saat 23:00 sonrasında çalışıyor, sabah derslerinde zihinsel yorgunluk var.</div>
+          <div class="persona-strategy">Sirkadiyen Ritim & Uyku Düzeni Koçluğu</div>
+        </div>
+        <div class="persona-card" onclick="selectPersonaDemo('yarida_birakan')">
+          <div class="persona-icon">🚪</div>
+          <div class="persona-title">Yarıda Bırakan</div>
+          <div class="persona-trigger">Hevesle başlayıp 2. haftada üst üste 2 gün sisteme hiç girmiyor.</div>
+          <div class="persona-strategy">Mikro-Hedef & Küçük Başarı Kutlaması</div>
+        </div>
+        <div class="persona-card" onclick="selectPersonaDemo('kaygiyla_erteleyen')">
+          <div class="persona-icon">😰</div>
+          <div class="persona-title">Kaygıyla Erteleyen</div>
+          <div class="persona-trigger">Sürekli rehberlik videosu izliyor ama asıl zor testleri erteliyor.</div>
+          <div class="persona-strategy">Sıfır Hata Baskısı Olmayan Tanı Testi</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing & ROI CTA Section -->
+    <section class="container" style="padding: 0 0 5rem;">
+      <div class="section-header">
+        <div class="section-tag">Abonelik & Fiyatlandırma</div>
+        <h2 class="section-title">Her Ölçekte Kanıtlanmış Değer</h2>
+        <p class="section-desc">
+          İster tek bir aile olun, ister yüz binlerce abonesi olan bir EdTech kuruluşu; AI Personal Coach yatırımını ilk 30 günde amorti eder.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- 14 Gün Deneme -->
+        <div class="pricing-card">
+          <div class="plan-name">14 Günlük Deneme</div>
+          <div class="plan-desc">Sınav kaygısını düşürmek ve sistemi deneyimlemek isteyen aileler için.</div>
+          <div class="plan-price-row">
+            <span class="plan-price">0 ₺</span>
+            <span class="plan-duration">/ 14 gün</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 1 Öğrenci Profili</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Temel Odak Takibi</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 1 Veli Haftalık Raporu</li>
+          </ul>
+          <button class="btn-secondary-lg" style="width: 100%; justify-content: center;" onclick="switchView('portal')">Hemen Başlat</button>
+        </div>
+
+        <!-- Pro Aile -->
+        <div class="pricing-card popular">
+          <div class="popular-badge">En Çok Tercih Edilen</div>
+          <div class="plan-name">Pro Veli & Öğrenci</div>
+          <div class="plan-desc">LGS ve YKS maratonunu huzur ve yüksek netlerle tamamlamak için.</div>
+          <div class="plan-price-row">
+            <span class="plan-price">299 ₺</span>
+            <span class="plan-duration">/ ay</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 7/24 LightGBM Risk & Churn Radarı</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Anlık WhatsApp Koçluk Bildirimleri</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> TreeSHAP Açıklanabilir Nedenler</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 22:00 Gece Bildirim Koruması</li>
+          </ul>
+          <button class="btn-primary-lg" style="width: 100%; justify-content: center;" onclick="switchView('portal')">Pro Paketi Seç</button>
+        </div>
+
+        <!-- B2B EdTech API -->
+        <div class="pricing-card">
+          <div class="plan-name">Kurumsal EdTech API</div>
+          <div class="plan-desc">Platformuna retention & koçluk motorunu entegre etmek isteyen EdTech'ler.</div>
+          <div class="plan-price-row">
+            <span class="plan-price">Özel</span>
+            <span class="plan-duration">/ API Kullanımı</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> REST API Endpoint'leri (/predict, /explain)</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> &lt;5 ms Ultra Düşük Gecikmeli Çıkarım</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> KVKK & GDPR Güvenlik Mimarisi</li>
+            <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Churn Azaltma Garantili SLA</li>
+          </ul>
+          <button class="btn-secondary-lg" style="width: 100%; justify-content: center;" onclick="switchView('b2b')">API Dokümantasyonu</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       VIEW 2: INTERACTIVE PARENT & COACH PORTAL (DASHBOARD)
+       ============================================================ -->
+  <main id="view-portal" class="view-panel">
+    <div class="container portal-layout">
+      
+      <!-- Portal Top Bar -->
+      <div class="portal-topbar">
+        <div class="portal-title-area">
+          <h2>🎯 Veli & Koç Yönetim Portalı</h2>
+          <p>Seçili öğrencinin davranışsal verilerini, SHAP risk analizini ve veli koçluk mesajlarını anlık simüle edin.</p>
+        </div>
+        
+        <!-- Student Selector Dropdown -->
+        <div class="student-selector-box">
+          <span style="font-size: 1.1rem;">👤</span>
+          <label for="studentSelect" style="font-size: 0.85rem; color: var(--text-secondary);">Öğrenci Profili:</label>
+          <select id="studentSelect" class="student-select" onchange="loadStudentData(this.value)">
+            <!-- Options dynamically populated by app.js -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid -->
+      <div class="dashboard-grid">
+        
+        <!-- Left Column: Metrics, SHAP, What-If -->
+        <div class="dash-col-left">
+          
+          <!-- Summary KPI Cards -->
+          <div class="kpi-row">
+            <div class="kpi-card" id="kpi-card-risk">
+              <div class="kpi-header">Kopma / Churn Riski</div>
+              <div class="kpi-num" id="kpi-risk-val">--%</div>
+              <div class="kpi-footer" id="kpi-risk-label">Analiz ediliyor...</div>
+            </div>
+            <div class="kpi-card" id="kpi-card-focus">
+              <div class="kpi-header">Ort. Odaklanma</div>
+              <div class="kpi-num blue" id="kpi-focus-val">-- dk</div>
+              <div class="kpi-footer">Hedef: &gt;25 dakika</div>
+            </div>
+            <div class="kpi-card" id="kpi-card-distract">
+              <div class="kpi-header">10 Dk+ Dağılma</div>
+              <div class="kpi-num" id="kpi-distract-val">-- kez</div>
+              <div class="kpi-footer">Eşik: ≥1 tetikleyici</div>
+            </div>
+          </div>
+
+          <!-- Explainable AI: TreeSHAP Breakdown -->
+          <div class="shap-card">
+            <div class="card-title-row">
+              <div>
+                <h3>🔍 Neden Bu Risk? (TreeSHAP Açıklanabilirlik)</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">Modelin kararında her özniteliğin pozitif veya negatif katkısı</p>
+              </div>
+              <div class="shap-legend">
+                <span class="shap-dot-red">■ Riski Artıran</span>
+                <span class="shap-dot-green">■ Riski Düşüren</span>
+              </div>
+            </div>
+
+            <!-- Dynamic SHAP Bars -->
+            <div class="shap-bars-container" id="shap-bars-list">
+              <!-- Dynamically populated by app.js -->
+            </div>
+          </div>
+
+          <!-- What-If Live Simulator -->
+          <div class="whatif-card">
+            <div class="card-title-row">
+              <div>
+                <h3>⚡ "What-If" Canlı Senaryo Simülatörü</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">Öğrenci davranışını değiştirin, risk skorunun ve koçluk mesajının anlık değişimini izleyin.</p>
+              </div>
+              <button class="btn-trial" style="padding: 0.35rem 0.85rem; font-size: 0.78rem;" onclick="resetWhatIf()">Sıfırla</button>
+            </div>
+
+            <div class="whatif-sliders-grid">
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <span>Hareketsiz Gün (inactivity_days):</span>
+                  <span class="slider-val-tag" id="val-sim-inactivity">4 gün</span>
+                </div>
+                <input type="range" class="range-input" id="sim-inactivity" min="0" max="21" value="4" oninput="updateWhatIf()">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <span>10 Dk+ Telefon Dağılması:</span>
+                  <span class="slider-val-tag" id="val-sim-distraction">2 kez</span>
+                </div>
+                <input type="range" class="range-input" id="sim-distraction" min="0" max="10" value="2" oninput="updateWhatIf()">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <span>Soru / Tıklama Yoğunluğu:</span>
+                  <span class="slider-val-tag" id="val-sim-clicks">45 tık</span>
+                </div>
+                <input type="range" class="range-input" id="sim-clicks" min="5" max="300" value="45" oninput="updateWhatIf()">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <span>Deneme / Quiz Başarısı:</span>
+                  <span class="slider-val-tag" id="val-sim-score">%54</span>
+                </div>
+                <input type="range" class="range-input" id="sim-score" min="20" max="100" value="54" oninput="updateWhatIf()">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Virtual iPhone 16 Mockup -->
+        <div class="dash-col-right">
+          
+          <div class="iphone-frame">
+            <div class="iphone-dynamic-island"></div>
+            
+            <div class="iphone-screen">
+              <!-- Top App Bar -->
+              <div>
+                <div class="phone-header-row">
+                  <div class="phone-coach-avatar">🎯</div>
+                  <div class="phone-coach-info">
+                    <div class="phone-coach-name">AI Personal Coach</div>
+                    <div class="phone-coach-status">● Çevrimiçi · Veli Rehberi</div>
+                  </div>
+                </div>
+
+                <!-- Notification Message Bubble -->
+                <div class="whatsapp-bubble" id="phone-message-bubble">
+                  <div class="bubble-tag" id="phone-bubble-tag">Özerklik Destekli Koçluk</div>
+                  <p id="phone-message-body">Yükleniyor...</p>
+                  <div class="bubble-action-box" id="phone-action-box">
+                    <strong>10 Dk Mikro-Eylem:</strong> <span id="phone-action-text">...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Simulated Action Button -->
+              <div>
+                <button class="phone-bottom-action" onclick="simulateParentAction()">
+                  ✓ Önerilen Cümleyi Kullandım
+                </button>
+                <div style="font-size: 0.68rem; text-align: center; color: var(--text-muted); margin-top: 0.4rem;">
+                  Veli-Öğrenci Diyalog Benimseme Takibi
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Retention Digest Card -->
+          <div class="digest-card">
+            <div class="digest-title">
+              <span>📋</span> Haftalık Veli Güven Karnesi
+            </div>
+            <p id="portal-digest-text" style="color: var(--text-secondary); line-height: 1.4;">
+              Öğrencinin haftalık çabası, odak blokları ve aileye özel pozitif pekiştirme notu.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       VIEW 3: EDTECH B2B GROWTH & ROI CENTER
+       ============================================================ -->
+  <main id="view-b2b" class="view-panel">
+    <div class="container portal-layout">
+      
+      <div class="section-header">
+        <div class="section-tag">EdTech Yönetici Karar Merkezi</div>
+        <h2 class="section-title">Erken Churn Önleme ROI Hesaplayıcısı</h2>
+        <p class="section-desc">
+          Platformunuzdaki abone kaybını %15–20 oranında azalttığınızda yıllık kazanacağınız tekrarlayan geliri (ARR) ve LTV/CAC genişlemesini anlık hesaplayın.
+        </p>
+      </div>
+
+      <!-- ROI Calculator Box -->
+      <div class="calculator-box">
+        <div class="calc-grid">
+          
+          <!-- Left: Sliders -->
+          <div>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>Aktif Abone Sayınız:</span>
+                <span class="slider-val-tag" id="lbl-calc-subs">10,000 abone</span>
+              </div>
+              <input type="range" class="range-input" id="calc-subs" min="1000" max="100000" step="1000" value="10000" oninput="calculateROI()">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>Aylık Abonelik Ücreti (TL):</span>
+                <span class="slider-val-tag" id="lbl-calc-price">299 ₺</span>
+              </div>
+              <input type="range" class="range-input" id="calc-price" min="99" max="999" step="20" value="299" oninput="calculateROI()">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>Mevcut 90-Gün Erken Churn Oranı:</span>
+                <span class="slider-val-tag" id="lbl-calc-churn">%45</span>
+              </div>
+              <input type="range" class="range-input" id="calc-churn" min="25" max="70" step="1" value="45" oninput="calculateROI()">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>AI Personal Coach ile Churn Azalması:</span>
+                <span class="slider-val-tag" id="lbl-calc-reduction">%20 (Hedef)</span>
+              </div>
+              <input type="range" class="range-input" id="calc-reduction" min="5" max="35" step="1" value="20" oninput="calculateROI()">
+            </div>
+          </div>
+
+          <!-- Right: Output Card -->
+          <div class="calc-results-card">
+            <div class="roi-badge">Kurtarılan Yıllık Tekrarlayan Gelir (ARR)</div>
+            <div class="roi-saved-money" id="res-saved-arr">7.17M ₺</div>
+            <div class="roi-subtext">AI Personal Coach sayesinde sistemde tutulan velilerin net ekonomik değeri.</div>
+
+            <div class="roi-stat-breakdown">
+              <div class="roi-stat-item">
+                <div class="roi-stat-num" id="res-saved-students">900 Aile</div>
+                <div class="roi-stat-lbl">Kurtarılan Abone</div>
+              </div>
+              <div class="roi-stat-item">
+                <div class="roi-stat-num" id="res-ltv-cac">3.2x</div>
+                <div class="roi-stat-lbl">Tahmini LTV / CAC</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <div class="brand-icon">🎯</div>
+            <div class="brand-text">
+              <span>AI Personal Coach</span>
+              <span>EdTech Retention Engine</span>
+            </div>
+          </div>
+          <p style="max-width: 420px; line-height: 1.5;">
+            Samsung Innovation Campus (SIC) AI in Marketing Bitirme Projesi. Eğitimde yapay zeka destekli proaktif veli iletişimi ve churn önleme mimarisi.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; margin-bottom: 0.75rem;">Hızlı Bağlantılar</h4>
+          <p><a href="#landing" onclick="switchView('landing')" style="color: var(--text-secondary); text-decoration: none;">Pazarlama Vitrini</a></p>
+          <p><a href="#portal" onclick="switchView('portal')" style="color: var(--text-secondary); text-decoration: none;">Canlı Veli Portalı</a></p>
+          <p><a href="#b2b" onclick="switchView('b2b')" style="color: var(--text-secondary); text-decoration: none;">B2B ROI Hesaplayıcısı</a></p>
+          <p><a href="/docs" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">FastAPI Swagger Docs ↗</a></p>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; margin-bottom: 0.75rem;">Teknoloji & Güvenlik</h4>
+          <p>LightGBM 4.6 · TreeSHAP</p>
+          <p>OpenAI GPT-3.5 Turbo</p>
+          <p>FastAPI Microservice</p>
+          <p>KVKK & GDPR Privacy-by-Design</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 AI Personal Coach · SIC AI-17 Capstone Group 1 · Tüm Hakları Saklıdır.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

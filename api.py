@@ -16,6 +16,7 @@ import time
 from typing import Any, Dict, List, Optional
 from fastapi import Depends, FastAPI, HTTPException, Header, Request, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from poc_pipeline import (
@@ -200,6 +201,13 @@ def list_fixture_students():
     }
 
 
+# Mount frontend as static files directory at /portal
+frontend_dir = Path(__file__).resolve().parent / "frontend"
+if frontend_dir.exists():
+    app.mount("/portal", StaticFiles(directory=str(frontend_dir), html=True), name="portal")
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("api:app", host="127.0.0.1", port=8000, reload=True)
+
