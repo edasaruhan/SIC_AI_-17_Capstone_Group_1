@@ -1,9 +1,10 @@
 /**
  * AI PERSONAL COACH — FRONTEND INTERACTIVITY & LOGIC
  * Samsung Innovation Campus (SIC) Capstone
+ * Fully aligned with AI_Personal_Coach_Proje.md
  */
 
-// 15 PoC Fixture Students (Offline-Ready & Embedded)
+// 15 PoC Fixture Students with Deep Weekly Report Metrics & Personas (§5, §9, §10)
 const STUDENTS_DB = [
   {
     student_id: "STU_001",
@@ -28,7 +29,17 @@ const STUDENTS_DB = [
     ],
     coach_script: "Ali bu hafta ders masasına oturmakta biraz zorlanıyor. Ona 'Neden ders çalışmıyorsun?' yerine, 'Sadece 5 dakikalık eğlenceli bir ısınma testine bakalım mı?' diyerek başlamasını kolaylaştırabilirsiniz.",
     action_text: "Masaya oturma felcini kırmak için 5 dakikalık tek soru testi başlatın.",
-    digest: "Ali'nin çalışma hevesi mevcut ancak başlangıç adımı destek istiyor. Küçük ısınma seanslarıyla ritim oturacaktır."
+    digest: "Ali'nin çalışma hevesi mevcut ancak başlangıç adımı destek istiyor. Küçük ısınma seanslarıyla ritim oturacaktır.",
+    // Weekly Report §5 specific data
+    weekly_report: {
+      risk_avg: "Yüksek",
+      actions_done: "5 / 12",
+      missed_blocks: "4 Blok",
+      distract_alerts: "3 Uyarı",
+      top_app: "Brawl Stars (Oyun)",
+      segment: "Başlayamayan",
+      official_sentence: "Bu hafta risk ortalaması yüksek. 12 aksiyondan 5'i tamamlandı. Dikkat dağılma uyarısı: 3. En çok kopma: derse başlama anında oyun bildirimi. Öneri: 5 dakikalık tek soru seansı ile başlayın."
+    }
   },
   {
     student_id: "STU_002",
@@ -53,7 +64,16 @@ const STUDENTS_DB = [
     ],
     coach_script: "Zeynep'in konu kavrayışı güçlü fakat telefon bildirimleri odak süresini bölüyor. Ona telefonunu yasaklamak yerine, '25 dakikalık odak bloğunda telefonu salondaki kutuya koyup seans bitince mola çayı içelim mi?' teklifinde bulunabilirsiniz.",
     action_text: "Pomodoro seansı boyunca telefonu görüş alanından çıkaracak 'Mola Kutusu' uygulayın.",
-    digest: "Zeynep'in potansiyeli yüksek; dikkat dağıtıcıları kontrol altına aldığında haftalık netleri hızla sıçrayacaktır."
+    digest: "Zeynep'in potansiyeli yüksek; dikkat dağıtıcıları kontrol altına aldığında haftalık netleri hızla sıçrayacaktır.",
+    weekly_report: {
+      risk_avg: "Orta-Yüksek",
+      actions_done: "7 / 12",
+      missed_blocks: "2 Blok",
+      distract_alerts: "6 Uyarı",
+      top_app: "Instagram (Sosyal)",
+      segment: "Telefonla Dağılan",
+      official_sentence: "Bu hafta risk ortalaması orta. 12 aksiyondan 7'si tamamlandı. Dikkat dağılma uyarısı: 6. En çok kopma: akşam sosyal medya. Öneri: odak bloğunda telefonu salondaki kutuya koyun."
+    }
   },
   {
     student_id: "STU_003",
@@ -78,7 +98,16 @@ const STUDENTS_DB = [
     ],
     coach_script: "Mert düzenli ve yüksek tempoda çalışıyor. Tek risk faktörü çalışmalarının gece geç saatlere kayması. Sabah denemelerinde zihin berraklığı için uyku düzenini kademeli olarak 1 saat öne çekmesini rica edebilirsiniz.",
     action_text: "Yatmadan 30 dakika önce mavi ışık maruziyetini kesip dinlenme seansına geçin.",
-    digest: "Mert için retention riski çok düşük; sistemde güvenle ilerliyor. Tebrik ve uyku dengesi yeterlidir."
+    digest: "Mert için retention riski çok düşük; sistemde güvenle ilerliyor. Tebrik ve uyku dengesi yeterlidir.",
+    weekly_report: {
+      risk_avg: "Düşük",
+      actions_done: "11 / 12",
+      missed_blocks: "0 Blok",
+      distract_alerts: "1 Uyarı",
+      top_app: "YouTube (Gece)",
+      segment: "Geceye Kayan",
+      official_sentence: "Bu hafta risk ortalaması çok düşük. 12 aksiyondan 11'i tamamlandı. Dikkat dağılma uyarısı: 1. En çok kopma: gece geç saat YouTube. Öneri: gündüz 2 kısa blok ekleyin, uyku saatini öne çekin."
+    }
   },
   {
     student_id: "STU_004",
@@ -103,7 +132,16 @@ const STUDENTS_DB = [
     ],
     coach_script: "Elif derse büyük bir hevesle başlıyor fakat 15. dakikadan sonra zihinsel yorgunluk hissedip seansı kapatıyor. Seansları 40 dakika yerine 20 dakikalık iki mini parçaya bölmek motivasyonunu korumasını sağlayacaktır.",
     action_text: "Çalışma bloklarını 20'şer dakikalık iki mini aşamaya bölün.",
-    digest: "Elif'in devamlılığı için blok süreleri optimize edildi; erken pes etme davranışı kırılıyor."
+    digest: "Elif'in devamlılığı için blok süreleri optimize edildi; erken pes etme davranışı kırılıyor.",
+    weekly_report: {
+      risk_avg: "Orta",
+      actions_done: "6 / 12",
+      missed_blocks: "3 Blok",
+      distract_alerts: "4 Uyarı",
+      top_app: "TikTok (Video)",
+      segment: "Yarıda Bırakan",
+      official_sentence: "Bu hafta risk ortalaması orta. 12 aksiyondan 6'sı tamamlandı. Dikkat dağılma uyarısı: 4. En çok kopma: blok ortasında sıkılma. Öneri: blokları 20 dakikaya indirin ve aralarda su molası verin."
+    }
   },
   {
     student_id: "STU_005",
@@ -128,18 +166,29 @@ const STUDENTS_DB = [
     ],
     coach_script: "Can'ın erteleme davranışı tembellikten değil, zorlandığı fizik konusundaki hata yapma korkusundan kaynaklanıyor. Ona 'Önemli olan test sonucu değil, sadece 3 soruya cesaretle bakman' diyerek baskıyı azaltabilirsiniz.",
     action_text: "Süre veya net baskısı olmadan yalnızca 3 soru çözme hedefi koyun.",
-    digest: "Kaygı bazlı kaçınma davranışı tespit edildi. Destekleyici dil ile derse dönüşü tetiklendi."
+    digest: "Kaygı bazlı kaçınma davranışı tespit edildi. Destekleyici dil ile derse dönüşü tetiklendi.",
+    weekly_report: {
+      risk_avg: "Yüksek",
+      actions_done: "4 / 12",
+      missed_blocks: "5 Blok",
+      distract_alerts: "3 Uyarı",
+      top_app: "WhatsApp (Sohbet)",
+      segment: "Kaygıyla Erteleyen",
+      official_sentence: "Bu hafta risk ortalaması yüksek. 12 aksiyondan 4'ü tamamlandı. Dikkat dağılma uyarısı: 3. En çok kopma: zor dersler öncesi erteleme. Öneri: sıfır hata baskısı olmadan sadece 3 soru hedefi koyun."
+    }
   }
 ];
 
 // Active State
 let currentStudent = STUDENTS_DB[0];
+let timerSeconds = 18 * 60 + 42; // 18:42
 
 // Initialize on DOM Load
 document.addEventListener("DOMContentLoaded", () => {
   populateStudentSelect();
   loadStudentData(currentStudent.student_id);
   calculateROI();
+  startFocusTimer();
 });
 
 // View Switcher Navigation
@@ -217,8 +266,31 @@ function loadStudentData(studentId) {
   document.getElementById("phone-message-body").textContent = s.coach_script;
   document.getElementById("phone-action-text").textContent = s.action_text;
 
-  // 5. Update Digest
+  // 5. Update Mini Digest
   document.getElementById("portal-digest-text").textContent = s.digest;
+
+  // 6. Update Official Weekly Report (§5)
+  if (s.weekly_report) {
+    document.getElementById("rep-student-name").textContent = s.name;
+    document.getElementById("rep-risk-avg").textContent = s.weekly_report.risk_avg;
+    document.getElementById("rep-actions-done").textContent = s.weekly_report.actions_done;
+    document.getElementById("rep-missed-blocks").textContent = s.weekly_report.missed_blocks;
+    document.getElementById("rep-distract-alerts").textContent = s.weekly_report.distract_alerts;
+    document.getElementById("rep-top-app").textContent = s.weekly_report.top_app;
+    document.getElementById("rep-segment").textContent = s.weekly_report.segment;
+    document.getElementById("rep-official-sentence").textContent = `"${s.weekly_report.official_sentence}"`;
+  }
+
+  // Update focus block app alert indicator
+  const alertPill = document.getElementById("focus-alert-pill");
+  if (alertPill) {
+    if (s.phone_distraction_10min_count >= 1) {
+      alertPill.style.display = "inline-flex";
+      alertPill.innerHTML = `<span>⚠️</span> ${s.weekly_report.top_app}: 12 Dk (>10 dk eşiği aşıldı)`;
+    } else {
+      alertPill.style.display = "none";
+    }
+  }
 }
 
 // Render SHAP Bars with Divergent Progress
@@ -321,9 +393,97 @@ function selectPersonaDemo(subSegment) {
   loadStudentData(match.student_id);
 }
 
+// ============================================================
+// LIVE PARENT TONE REFRAMER (§7)
+// ============================================================
+function setQuickPrompt(text) {
+  const inputEl = document.getElementById("parentToneInput");
+  if (inputEl) {
+    inputEl.value = text;
+    inputEl.focus();
+  }
+}
+
+function reframeToneLive() {
+  const inputEl = document.getElementById("parentToneInput");
+  const rawText = inputEl.value.trim() || "Telefonu bırakmadı, dersi yine böldü, çok kızgınım.";
+
+  // Rule & Tone Reframing Engine (Deci & Ryan 2000 - Self Determination Theory)
+  let transformedMsg = "";
+  let microAction = "";
+
+  if (rawText.toLowerCase().includes("telefon") || rawText.toLowerCase().includes("böl")) {
+    transformedMsg = `Dikkatin dağıldığını ve zorlandığını gördük. Sorun değil, şimdi toparlanabilirsin. 20 dakikalık tek bir soru bloğu yap; bitince mola çayı senin.`;
+    microAction = `20 dakikalık tek soru bloğu başlat ve telefonu mola kutusuna koy.`;
+  } else if (rawText.toLowerCase().includes("otur") || rawText.toLowerCase().includes("başla")) {
+    transformedMsg = `Masaya oturmak bazen günün en zor adımıdır. Hiç canını sıkma, sadece 5 dakikalık tek bir ısınma sorusuna bakıp kalkabilirsin.`;
+    microAction = `Sadece 5 dakikalık 1 soru çöz ve başarı butonuna bas.`;
+  } else if (rawText.toLowerCase().includes("net") || rawText.toLowerCase().includes("deneme") || rawText.toLowerCase().includes("hata")) {
+    transformedMsg = `Deneme netleri inişli çıkışlı olabilir; bu sürecin çok doğal bir parçası. Bugün yanlışlarına kızmak yerine sadece 1 konunun püf noktasına bakalım.`;
+    microAction = `Son denemeden sadece 1 yanlış sorunun video çözümünü incele.`;
+  } else {
+    transformedMsg = `Bugün çalışma ritminde küçük bir dalgalanma hissettik. Seni çok iyi anlıyoruz; derin bir nefes alıp 15 dakikalık mini bir blokla günün kapanışını yapabilirsin.`;
+    microAction = `15 dakikalık hafif tekrar bloğu tamamla.`;
+  }
+
+  // Update phone screen with animation
+  const phoneBody = document.getElementById("phone-message-body");
+  const phoneAction = document.getElementById("phone-action-text");
+  const phoneBubble = document.getElementById("phone-message-bubble");
+
+  phoneBubble.style.transform = "scale(0.96)";
+  phoneBubble.style.opacity = "0.6";
+
+  setTimeout(() => {
+    phoneBody.textContent = transformedMsg;
+    phoneAction.textContent = microAction;
+    document.getElementById("phone-bubble-tag").textContent = "AI Motive Edici Koçluk Mesajı";
+    phoneBubble.style.transform = "scale(1)";
+    phoneBubble.style.opacity = "1";
+    phoneBubble.style.transition = "all 0.3s ease";
+  }, 250);
+
+  // Switch focus or smooth scroll to phone screen
+  document.querySelector(".dash-col-right").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
 // Simulate Parent Action
 function simulateParentAction() {
   alert(`✓ Harika! ${currentStudent.name} için önerilen koçluk diyaloğu veli tarafından uygulandı olarak kaydedildi. Sistem 90 günlük retention skorunu güncelledi!`);
+}
+
+// Print Weekly Report (§5)
+function printWeeklyReport() {
+  alert(`📄 [Resmi Rapor Çıktısı] ${currentStudent.name} için Haftalık Veli Güven Karnesi PDF formatında hazırlanıyor. Yazdırma penceresi açılıyor.`);
+  window.print();
+}
+
+// Focus Tracker Timer countdown
+function startFocusTimer() {
+  const clockEl = document.getElementById("focus-timer-clock");
+  if (!clockEl) return;
+
+  setInterval(() => {
+    if (timerSeconds > 0) {
+      timerSeconds--;
+      const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+      const secs = (timerSeconds % 60).toString().padStart(2, '0');
+      clockEl.textContent = `${mins}:${secs}`;
+    }
+  }, 1000);
+}
+
+// Onboarding & Survey Choice Toggle
+function toggleSurveyChoice(btn) {
+  const parent = btn.parentElement;
+  parent.querySelectorAll(".survey-choice-btn").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+}
+
+function saveOnboardingProfile() {
+  const freeText = document.getElementById("onboard-free-text").value;
+  alert(`✅ Öğrenci profili başarıyla güncellendi!\n\nVeli Anlatımı ve Anket analiz edildi. Öğrenci modeli 'Telefonla Dağılan' alt segmentine kalibre edildi. Veli Portalı güncel verilerle hazır.`);
+  switchView('portal');
 }
 
 // ROI & LTV/CAC Calculator Logic
@@ -340,14 +500,9 @@ function calculateROI() {
   document.getElementById("lbl-calc-reduction").textContent = `%${Math.round(reductionRate * 100)} (Hedef)`;
 
   // Calculations
-  // Churning students per year = subs * churnRate
-  // Saved students = subs * churnRate * reductionRate
   const savedStudents = Math.round(subs * churnRate * reductionRate);
-  
-  // Extra ARR = savedStudents * price * 12 months
   const extraArr = savedStudents * price * 12;
 
-  // Format ARR in Million TL or Thousand TL
   let arrFormatted = "";
   if (extraArr >= 1000000) {
     arrFormatted = (extraArr / 1000000).toFixed(2) + "M ₺";
@@ -358,7 +513,6 @@ function calculateROI() {
   document.getElementById("res-saved-arr").textContent = arrFormatted;
   document.getElementById("res-saved-students").textContent = `${savedStudents.toLocaleString('tr-TR')} Aile`;
 
-  // Estimate LTV / CAC boost (Base ~1.8x, goes up to 3.5x)
   const ltvCac = (1.8 + (reductionRate * 7)).toFixed(1) + "x";
   document.getElementById("res-ltv-cac").textContent = ltvCac;
 }
