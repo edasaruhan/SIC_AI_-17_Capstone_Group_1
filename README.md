@@ -165,36 +165,55 @@ Projemiz, spesifik sorumluluklara sahip 5 kişilik bir takım tarafından 3 ana 
 
 ## Repo Yapısı
 
-Proje dosyaları mantıksal bir klasör yapısı içerisinde GitHub'da organize edilmiştir:
+Proje dosyaları mantıksal, modüler ve temiz bir klasör yapısı içerisinde organize edilmiştir:
 
 ```text
 SIC_AI_-17_Capstone_Group_1/
-├── README.md                              # Bu genel proje dokümantasyon dosyası
-├── 00_project_brief.md                    # K1: Proje stratejisi ve özet brief
-├── references.bib                         # Ortak Kullanım: Tüm ekip kaynaklarını bu APA/BibTeX dosyasına ekler
+├── app.py                                 # Streamlit İnteraktif Yönetim & Koçluk Portalı
+├── api.py                                 # Production FastAPI Modeli & REST Microservice
+├── poc_pipeline.py                        # Uçtan Uca 5 Katmanlı Hibrit AI Pipeline'ı
+├── README.md                              # Ana Proje Kılavuzu & Mimari Dokümantasyon
+├── references.bib                         # Ortak Akademik Kaynakça (BibTeX/APA)
 │
-├── literature-review/
-│   ├── 01_intro_gap_conclusion.md         # K1: Literatür giriş, boşluk (gap) analizi ve sonuç
-│   └── 02_source_summaries.md             # K2: Seçilen 10-12 kaynağın detaylı özeti ve matriksi
+├── frontend/                              # Modern Web Uygulaması (HTML5, CSS3, JavaScript)
+│   ├── index.html                         # Pazarlama Vitrini, Veli Portalı, Anketler, ROI Merkezi
+│   ├── styles.css                         # Cam Efektli (Glassmorphic) Tasarım Sistemi
+│   └── app.js                             # İstemci Mantığı, Canlı Üslup Dönüştürücü, Simülatör
 │
-├── data-research/
-│   ├── 01_scope_eda.md                    # K3: Veri kapsamı ve EDA sonuç raporu
-│   ├── 02_governance.md                   # K4: Veri yönetişimi, KVKK, rıza süreçleri ve sentetik veri temelleri
-│   ├── notebooks/
-│   │   └── oulad_eda.ipynb                # K3: Etkileşimli EDA ve görselleştirme Jupyter defteri
-│   ├── scripts/
-│   │   └── synthetic_data.py              # K4: Simülasyon ve sentetik veri üretim betiği
-│   └── figures/                           # K3: Raporlarda kullanılan çıktı grafikler ve dağılımlar
+├── data-research/                         # Veri Bilimi, Modelleme ve Keşifçi Veri Analizi
+│   ├── figures/                           # Yüksek Çözünürlüklü EDA Grafikleri (fig1 - fig6)
+│   ├── fixtures/                          # 15 Sentetik Öğrenci Test Profili (JSON / CSV)
+│   ├── modeling/                          # LightGBM, SHAP Explainer, Eşik Analizi (0.40 Eşik)
+│   ├── notebooks/                         # EDA ve Görselleştirme Defterleri
+│   ├── scripts/                           # Sentetik Veri Üretim Betikleri (Python 3.12, Seed 42)
+│   └── oulad_synthetic_processed.csv      # İşlenmiş Eğitim ve Test Veri Seti
 │
-└── technology-review/
-    └── tech_review.md                     # K5: MLOps, algoritmalar ve kapsamlı teknoloji değerlendirmesi
+├── submissions/                           # Capstone Teslim Dosyaları (Word .docx & Markdown)
+│   ├── 01_concept_note/                   # Milestone 1: Konsept Notu & Uygulama Planı
+│   │   ├── AI_in_Marketing_Concept_Note_and_Implementation_Plan_Completed.docx
+│   │   ├── CONCEPT_NOTE_AND_IMPLEMENTATION_PLAN.md
+│   │   └── templates/                     # Orijinal Jüri Şablonu
+│   ├── 02_data_preparation_and_modeling/ # Milestone 2: Veri Hazırlığı & Model Keşfi
+│   │   ├── Data_Preparation_Feature_Engineering_and_Model_Exploration_Completed.docx
+│   │   ├── DATA_PREPARATION_AND_MODEL_EXPLORATION.md
+│   │   └── templates/
+│   └── 03_deployment/                     # Milestone 3: Dağıtım & Üretim Mimarisi
+│       ├── Deployment_Submission_Completed.docx
+│       ├── DEPLOYMENT_SUBMISSION.md
+│       └── templates/
+│
+├── briefs/                                # Proje Görev Tanımları & Eğitmen Yönergeleri
+│   ├── 00_project_brief.md                # K1: Proje stratejisi ve özet brief
+│   ├── AI_Personal_Coach_Proje.md         # Eğitmen Geri Bildirimli Ana Proje Dokümanı
+│   └── SIC_AI17_Capstone_Yapilacak_Isler.md # Sprint Yapılacak İşler Listesi
+│
+├── concept-implementation/                # Konsept ve Mimari Detay Dokümantasyonu
+├── literature-review/                     # Akademik Literatür İncelemesi (Deci & Ryan, Fogg, OULAD)
+├── technology-review/                     # Kapsamlı Teknoloji Değerlendirmesi
+└── tests/                                 # Otomatik Pytest Test Paketi (16/16 Passed)
+    ├── test_api.py                        # FastAPI Uç Nokta Testleri
+    └── test_poc_pipeline.py               # 5 Katmanlı AI Pipeline Birim Testleri
 ```
-
-**Git Workflow (Ekip Çalışma Akışı):**
-- Her takım üyesi kendi özellik dalında (feature branch) çalışır (örneğin: `feat/lit-review-k1`, `feat/tech-review-k5`, vb.).
-- Değişiklikler günlük olarak uzak sunucuya (origin) itilir (Push).
-- Geliştirme tamamlandığında Pull Request (PR) açılır ve Ana (Main) dala K1'in koordinatörlüğünde dahil edilir (Merge).
-- Son gün çatışmalar (conflict resolution) çözülerek nihai sürüm birleştirilir.
 
 ---
 
